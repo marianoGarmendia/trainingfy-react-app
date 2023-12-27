@@ -2,7 +2,7 @@ import SetTrain from './SetTrain'
 import { useEffect, useState } from 'react'
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom'
 
-const CardTrain = ({ setTrainGenerated, trainGenerated }) => {
+const CardTrain = ({ setTrainGenerated }) => {
   const { trainName } = useParams()
   const [trainOk, setTrainOk] = useState(false)
   const location = useLocation()
@@ -37,8 +37,6 @@ const CardTrain = ({ setTrainGenerated, trainGenerated }) => {
           train={trainName}
           setTrainGenerated={setTrainGenerated}
           setTrainOk={setTrainOk}
-          trainOk={trainOk}
-          trainGenerated={trainGenerated}
         />
       )}
     </div>

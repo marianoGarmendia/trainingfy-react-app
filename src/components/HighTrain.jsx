@@ -6,7 +6,16 @@ const url =
   'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
 
 // eslint-disable-next-line react/prop-types
-const HighTrain = ({ trainGenerated }) => {
+const HighTrain = () => {
+  const [trainCreate, setTrainCreate] = useState({})
+  const [dataFetch, setDataFetch] = useState({})
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('dataFetchHigh'))
+    data && setDataFetch(data)
+    const train = JSON.parse(localStorage.getItem('train'))
+    train && setTrainCreate(train)
+  }, [])
   const {
     timefirstBl,
     cantidadExcercisesFirstBl,
@@ -14,22 +23,19 @@ const HighTrain = ({ trainGenerated }) => {
     cantidadExcercisesSecondBl,
     timeThirdBl,
     cantidadExcercisesThirdBl,
-  } = trainGenerated
-
-  const { data } = useFetch(url)
-  const excercises = data?.slice(0, cantidadExcercisesFirstBl)
+  } = trainCreate
 
   const cantidadReps = () => {
     return Math.floor(Math.random() * 5) + 3
   }
-
-  const reps = cantidadReps() * cantidadExcercisesFirstBl
+  // const reps = cantidadReps() * cantidadExcercisesFirstBl
+  // const excercises = data?.slice(0, cantidadExcercisesFirstBl)
 
   return (
     <div>
       <h2 className="font-bold ">Set Core</h2>
-      <h3 className="my-2 font-semibold text-md">Amrap de: {timefirstBl}</h3>
-      <ul>
+      <h3 className="my-2 font-semibold text-md">Amrap de: 5</h3>
+      {/* <ul>
         {excercises ? (
           excercises.map((exc, index) => {
             return (
@@ -41,7 +47,7 @@ const HighTrain = ({ trainGenerated }) => {
         ) : (
           <p>Loading...</p>
         )}
-      </ul>
+      </ul> */}
     </div>
   )
 }
