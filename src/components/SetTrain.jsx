@@ -1,90 +1,93 @@
 // import React from "react";
-import ExerciseList from './ExercisesList';
-import { useState } from 'react';
-import SubmitBtn from './SubmitBtn';
-import InputEl from './InputEl';
-import SubmitError from './SubmitError';
-import TrainGenerated from './TrainGenerated';
+import ExerciseList from './ExercisesList'
+import { useState } from 'react'
+import SubmitBtn from './SubmitBtn'
+import InputEl from './InputEl'
+import SubmitError from './SubmitError'
+
+import { useNavigate } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
-const SetTrain = ({ train }) => {
-  const [trainOk, setTrainOk] = useState(false);
-  const [trainGenerated, setTrainGenerated] = useState({});
+const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
+  // const [trainOk, setTrainOk] = useState(false)
+  // const [trainGenerated, setTrainGenerated] = useState({})
 
   // Seteando la cantidad de ejercicios por bloque High
-  const [cantidadExcercisesFirstBl, setCantidadExcercisesFirstBl] = useState(2);
+  const [cantidadExcercisesFirstBl, setCantidadExcercisesFirstBl] = useState(2)
   const [cantidadExcercisesSecondBl, setCantidadExcercisesSecondBl] =
-    useState(2);
-  const [cantidadExcercisesThirdBl, setCantidadExcercisesThirdBl] = useState(2);
+    useState(2)
+  const [cantidadExcercisesThirdBl, setCantidadExcercisesThirdBl] = useState(2)
 
   // Seteando la cantidad de ejercicios por bloque Functio
   const [
     cantidadExcercisesFirstBlFunctio,
     setCantidadExcercisesFirstBlFunctio,
-  ] = useState(2);
+  ] = useState(2)
 
   const [
     cantidadExcercisesSecondBlFunctio,
     setCantidadExcercisesSecondBlFunctio,
-  ] = useState(2);
+  ] = useState(2)
 
   // Mensaje de error High cuando envian el form incompleto
-  const [messageErrorHigh, setMessageError] = useState(false);
+  const [messageErrorHigh, setMessageError] = useState(false)
 
   // Mensaje de error de cross cuando envian el form incompleto
-  const [messageErrorCross, setMessageErrorCross] = useState(false);
+  const [messageErrorCross, setMessageErrorCross] = useState(false)
 
   // Mensaje error de Functio cuando envian el form incompleto
-  const [messageErrorFunctio, setMessageErrorFunctio] = useState(false);
+  const [messageErrorFunctio, setMessageErrorFunctio] = useState(false)
 
   // Mensaje error de Power woman cuando envian el form incompleto
-  const [messageErrorPower, setMessageErrorPower] = useState(false);
+  const [messageErrorPower, setMessageErrorPower] = useState(false)
 
   // Modadlidad de wod
-  const [wodModalidad, setWodModalidad] = useState('');
+  const [wodModalidad, setWodModalidad] = useState('')
 
   // Seteando el tiempo de entrenamiento de High intensity , este estado tmb determina cual es el boton clickeado en cada campo
 
-  const [timefirstBl, setTimeFirstBl] = useState('');
-  const [timeSecondBl, setTimeSecondBl] = useState('');
-  const [timeThirdBl, setTimeThirdBl] = useState('');
+  const [timefirstBl, setTimeFirstBl] = useState('')
+  const [timeSecondBl, setTimeSecondBl] = useState('')
+  const [timeThirdBl, setTimeThirdBl] = useState('')
 
   // Tiempo del segundo bloque de crossfit
-  const [crossTime, setCrossTime] = useState('');
+  const [crossTime, setCrossTime] = useState('')
 
   // Enfoque del entrenamiento de crossfit
-  const [focusTrainCross, setFocusTrainCross] = useState('');
+  const [focusTrainCross, setFocusTrainCross] = useState('')
 
   // Seteando la modalidad del primer bloque de Crossfit
-  const [crossModalidad, setCrossModalidad] = useState('');
+  const [crossModalidad, setCrossModalidad] = useState('')
 
   // Seteando el tiempo de bloques de Functional
-  const [timefirstBlFunctio, setTimeFirstBlFunctio] = useState('');
-  const [timeSecondBlFunctio, setTimeSecondBlFunctio] = useState('');
+  const [timefirstBlFunctio, setTimeFirstBlFunctio] = useState('')
+  const [timeSecondBlFunctio, setTimeSecondBlFunctio] = useState('')
 
   // Seteando la modalidad de power
-  const [powerModalidad, setPowerModalidad] = useState('');
+  const [powerModalidad, setPowerModalidad] = useState('')
 
   // Seteando el tiempo de power
-  const [timePower, setTimePower] = useState('');
+  const [timePower, setTimePower] = useState('')
 
   // Entrenamiento generado
 
   // Los valores que necesita el entrenamiento generado
+  console.log(train)
 
-  const high = 'High Intensity';
-  const crossfit = 'Crossfit';
-  const functional = 'Functional';
-  const powerWoman = 'Power Woman';
+  const high = /High\s?Intensity/i
+  const crossfit = 'Crossfit'
+  const functional = 'Functional'
+  const powerWoman = /Power\s?woman/i
 
-  const buttonClass = `bg-sambayon text-customInterior text-center w-2/3  sm:mx-2 mx-auto mt-2 hover:scale-105 rounded-sm p-2 font-semibold hover:cursor-pointer outline-none focus:ring-2 focus:ring-white focus:text-white  `;
+  const buttonClass = `bg-sambayon text-customInterior text-center w-2/3  sm:mx-2 mx-auto mt-2 hover:scale-105 rounded-sm p-2 font-semibold hover:cursor-pointer outline-none focus:ring-2 focus:ring-white focus:text-white  `
 
   const buttonClassSelect = `bg-sambayon text-customInterior text-center w-2/3  sm:mx-2 mx-auto mt-2 hover:scale-105 rounded-sm p-2 font-semibold hover:cursor-pointer outline-none focus:ring-2 focus:ring-white focus:text-white 
      ring-2 ring-white text-white scale-105 
-  `;
+  `
+  const navigate = useNavigate()
 
   const handleSubmitHigh = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const campos = [
       timefirstBl,
       cantidadExcercisesFirstBl,
@@ -92,9 +95,9 @@ const SetTrain = ({ train }) => {
       cantidadExcercisesSecondBl,
       timeThirdBl,
       cantidadExcercisesThirdBl,
-    ];
+    ]
 
-    const camposCompletos = campos.every(Boolean);
+    const camposCompletos = campos.every(Boolean)
 
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
@@ -105,72 +108,83 @@ const SetTrain = ({ train }) => {
           cantidadExcercisesSecondBl,
           timeThirdBl,
           cantidadExcercisesThirdBl,
-        }) & setTrainOk(true)
-      : setMessageError(true);
-  };
+        }) &
+        setTrainOk(true) &
+        navigate('generatedTrain')
+      : setMessageError(true)
+  }
 
   const handleSubmitCross = (e) => {
-    e.preventDefault();
-    const campos = [crossModalidad, wodModalidad, crossTime, focusTrainCross];
+    e.preventDefault()
+    const campos = [crossModalidad, wodModalidad, crossTime, focusTrainCross]
     const trainCompleted = {
       crossModalidad,
       wodModalidad,
       crossTime,
       focusTrainCross,
-    };
-    const camposCompletos = campos.every(Boolean);
+    }
+    const camposCompletos = campos.every(Boolean)
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
       ? setMessageErrorCross(false) &
         setTrainGenerated(trainCompleted) &
+        setTrainOk(true) &
+        navigate('generatedTrain') &
         setTrainOk(true)
-      : setMessageErrorCross(true);
-  };
+      : setMessageErrorCross(true)
+  }
 
   const handleSubmitFunctio = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const campos = [
       timefirstBlFunctio,
       cantidadExcercisesFirstBlFunctio,
       timeSecondBlFunctio,
       cantidadExcercisesSecondBlFunctio,
-    ];
-    const camposCompletos = campos.every(Boolean);
+    ]
+    const camposCompletos = campos.every(Boolean)
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
-      ? setMessageErrorFunctio(false) & setTrainGenerated(campos)
-      : setMessageErrorFunctio(true);
-  };
+      ? setMessageErrorFunctio(false) &
+        setTrainGenerated(campos) &
+        navigate('generatedTrain') &
+        setTrainOk(true)
+      : setMessageErrorFunctio(true)
+  }
 
   const handleSubmitPower = (e) => {
-    e.preventDefault();
-    const campos = [powerModalidad, timePower];
-    const camposCompletos = campos.every(Boolean);
+    e.preventDefault()
+    const campos = [powerModalidad, timePower]
+    const camposCompletos = campos.every(Boolean)
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
-      ? setMessageErrorPower(false) & setTrainGenerated(campos)
-      : setMessageErrorPower(true);
-  };
+      ? setMessageErrorPower(false) &
+        setTrainGenerated(campos) &
+        navigate('generatedTrain') &
+        setTrainOk(true)
+      : setMessageErrorPower(true)
+  }
 
   return (
     <>
-      {trainOk ? (
-        train === 'High Intensity' ? (
+      {/* {trainOk ? (
+        high.test(train) ? (
           <TrainGenerated
             train={train}
-            trainGenerated={trainGenerated}
+            // trainGenerated={}
             trainOk={trainOk}
           />
         ) : train === 'Crossfit' ? (
-          <TrainGenerated train={train} trainGenerated={trainGenerated} />
+          <TrainGenerated train={train} />
         ) : train === 'Functional' ? (
           <div>Entrenamiento Generado{train}</div>
         ) : (
           train === 'Power Woman' && <div>Entrenamiento Generado{train}</div>
         )
-      ) : (
+      ) : ( */}
+      {
         <div className="bg-customInterior rounded-md p-4 md:w-2/3  md:mx-auto mx-4">
-          {train === high ? (
+          {high.test(train) ? (
             <form onSubmit={handleSubmitHigh}>
               <p className="p-2 text-center">
                 Elige el tiempo del primer bloque
@@ -184,7 +198,7 @@ const SetTrain = ({ train }) => {
                   }
                   defaultValue="8 minutos"
                   onClickProp={(e) => {
-                    setTimeFirstBl(e.target.defaultValue);
+                    setTimeFirstBl(e.target.defaultValue)
                   }}
                 />
                 <InputEl
@@ -212,7 +226,7 @@ const SetTrain = ({ train }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesFirstBl(e.target.value);
+                    setCantidadExcercisesFirstBl(e.target.value)
                   }}
                 />
                 <p className="p-2 text-center">
@@ -227,7 +241,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="10 minutos"
                     onClickProp={(e) => {
-                      setTimeSecondBl(e.target.defaultValue);
+                      setTimeSecondBl(e.target.defaultValue)
                     }}
                   />
 
@@ -239,7 +253,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="14 minutos"
                     onClickProp={(e) => {
-                      setTimeSecondBl(e.target.defaultValue);
+                      setTimeSecondBl(e.target.defaultValue)
                     }}
                   />
 
@@ -251,14 +265,14 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="18 minutos"
                     onClickProp={(e) => {
-                      setTimeSecondBl(e.target.defaultValue);
+                      setTimeSecondBl(e.target.defaultValue)
                     }}
                   />
                 </div>
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesSecondBl(e.target.value);
+                    setCantidadExcercisesSecondBl(e.target.value)
                   }}
                 />
                 <p className="p-2 text-center">
@@ -273,7 +287,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="10 minutos"
                     onClickProp={(e) => {
-                      setTimeThirdBl(e.target.defaultValue);
+                      setTimeThirdBl(e.target.defaultValue)
                     }}
                   />
 
@@ -285,7 +299,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="14 minutos"
                     onClickProp={(e) => {
-                      setTimeThirdBl(e.target.defaultValue);
+                      setTimeThirdBl(e.target.defaultValue)
                     }}
                   />
 
@@ -297,19 +311,19 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="18 minutos"
                     onClickProp={(e) => {
-                      setTimeThirdBl(e.target.defaultValue);
+                      setTimeThirdBl(e.target.defaultValue)
                     }}
                   />
                 </div>
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesThirdBl(e.target.value);
+                    setCantidadExcercisesThirdBl(e.target.value)
                   }}
                 />
               </div>
               {messageErrorHigh ? <SubmitError /> : null}
-              <SubmitBtn />
+              <SubmitBtn></SubmitBtn>
             </form>
           ) : train === crossfit ? (
             <form onSubmit={handleSubmitCross}>
@@ -322,7 +336,7 @@ const SetTrain = ({ train }) => {
                       : buttonClass
                   }
                   onClickProp={(e) => {
-                    setCrossModalidad(e.target.defaultValue);
+                    setCrossModalidad(e.target.defaultValue)
                   }}
                   defaultValue="Fuerza"
                 />
@@ -334,7 +348,7 @@ const SetTrain = ({ train }) => {
                       : buttonClass
                   }
                   onClickProp={(e) => {
-                    setCrossModalidad(e.target.defaultValue);
+                    setCrossModalidad(e.target.defaultValue)
                   }}
                   defaultValue="Skills"
                 />
@@ -344,7 +358,7 @@ const SetTrain = ({ train }) => {
                     crossModalidad === 'Core' ? buttonClassSelect : buttonClass
                   }
                   onClickProp={(e) => {
-                    setCrossModalidad(e.target.defaultValue);
+                    setCrossModalidad(e.target.defaultValue)
                   }}
                   defaultValue="Core"
                 />
@@ -356,7 +370,7 @@ const SetTrain = ({ train }) => {
                       : buttonClass
                   }
                   onClickProp={(e) => {
-                    setCrossModalidad(e.target.defaultValue);
+                    setCrossModalidad(e.target.defaultValue)
                   }}
                   defaultValue="Ninguno"
                 />
@@ -374,7 +388,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="A completar"
                     onClickProp={(e) => {
-                      setWodModalidad(e.target.defaultValue);
+                      setWodModalidad(e.target.defaultValue)
                     }}
                   />
 
@@ -384,7 +398,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="Amrap"
                     onClickProp={(e) => {
-                      setWodModalidad(e.target.defaultValue);
+                      setWodModalidad(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -395,7 +409,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="Por rondas"
                     onClickProp={(e) => {
-                      setWodModalidad(e.target.defaultValue);
+                      setWodModalidad(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -404,7 +418,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="OTM"
                     onClickProp={(e) => {
-                      setWodModalidad(e.target.defaultValue);
+                      setWodModalidad(e.target.defaultValue)
                     }}
                   />
                 </div>
@@ -420,7 +434,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="10 minutos"
                     onClickProp={(e) => {
-                      setCrossTime(e.target.defaultValue);
+                      setCrossTime(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -431,7 +445,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="14 minutos"
                     onClickProp={(e) => {
-                      setCrossTime(e.target.defaultValue);
+                      setCrossTime(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -442,7 +456,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="18 minutos"
                     onClickProp={(e) => {
-                      setCrossTime(e.target.defaultValue);
+                      setCrossTime(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -453,7 +467,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="+ 20 minutos"
                     onClickProp={(e) => {
-                      setCrossTime(e.target.defaultValue);
+                      setCrossTime(e.target.defaultValue)
                     }}
                   />
                 </div>
@@ -469,7 +483,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="Gymnastic"
                     onClickProp={(e) => {
-                      setFocusTrainCross(e.target.defaultValue);
+                      setFocusTrainCross(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -480,7 +494,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="Weightlifting"
                     onClickProp={(e) => {
-                      setFocusTrainCross(e.target.defaultValue);
+                      setFocusTrainCross(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -491,7 +505,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="Cardio"
                     onClickProp={(e) => {
-                      setFocusTrainCross(e.target.defaultValue);
+                      setFocusTrainCross(e.target.defaultValue)
                     }}
                   />
                   <InputEl
@@ -502,7 +516,7 @@ const SetTrain = ({ train }) => {
                     }
                     defaultValue="Combinacion"
                     onClickProp={(e) => {
-                      setFocusTrainCross(e.target.defaultValue);
+                      setFocusTrainCross(e.target.defaultValue)
                     }}
                   />
                 </div>
@@ -557,7 +571,7 @@ const SetTrain = ({ train }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesFirstBlFunctio(e.target.value);
+                    setCantidadExcercisesFirstBlFunctio(e.target.value)
                   }}
                 />
                 <p className="p-2 text-center">
@@ -604,7 +618,7 @@ const SetTrain = ({ train }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesSecondBlFunctio(e.target.value);
+                    setCantidadExcercisesSecondBlFunctio(e.target.value)
                   }}
                 />
               </div>
@@ -612,7 +626,7 @@ const SetTrain = ({ train }) => {
               <SubmitBtn />
             </form>
           ) : (
-            train === powerWoman && (
+            powerWoman.test(train) && (
               <form onSubmit={handleSubmitPower}>
                 <p className="p-2 text-center">
                   Elige la intensidad del entrenamiento
@@ -625,7 +639,7 @@ const SetTrain = ({ train }) => {
                         : buttonClass
                     }
                     onClickProp={(e) => {
-                      setPowerModalidad(e.target.defaultValue);
+                      setPowerModalidad(e.target.defaultValue)
                     }}
                     defaultValue="Suave"
                   />
@@ -636,7 +650,7 @@ const SetTrain = ({ train }) => {
                         : buttonClass
                     }
                     onClickProp={(e) => {
-                      setPowerModalidad(e.target.defaultValue);
+                      setPowerModalidad(e.target.defaultValue)
                     }}
                     defaultValue="Moderada"
                   />
@@ -647,7 +661,7 @@ const SetTrain = ({ train }) => {
                         : buttonClass
                     }
                     onClickProp={(e) => {
-                      setCrossModalidad(e.target.defaultValue);
+                      setCrossModalidad(e.target.defaultValue)
                     }}
                     defaultValue="Intensa"
                   />
@@ -664,7 +678,7 @@ const SetTrain = ({ train }) => {
                           : buttonClass
                       }
                       onClickProp={(e) => {
-                        setTimePower(e.target.defaultValue);
+                        setTimePower(e.target.defaultValue)
                       }}
                       defaultValue="12 minutos"
                     />
@@ -675,7 +689,7 @@ const SetTrain = ({ train }) => {
                           : buttonClass
                       }
                       onClickProp={(e) => {
-                        setTimePower(e.target.defaultValue);
+                        setTimePower(e.target.defaultValue)
                       }}
                       defaultValue="15 minutos"
                     />
@@ -686,7 +700,7 @@ const SetTrain = ({ train }) => {
                           : buttonClass
                       }
                       onClickProp={(e) => {
-                        setTimePower(e.target.defaultValue);
+                        setTimePower(e.target.defaultValue)
                       }}
                       defaultValue="+ 18 minutos"
                     />
@@ -698,9 +712,9 @@ const SetTrain = ({ train }) => {
             )
           )}
         </div>
-      )}
+      }
     </>
-  );
-};
+  )
+}
 
-export default SetTrain;
+export default SetTrain

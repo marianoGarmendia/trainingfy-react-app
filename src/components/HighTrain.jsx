@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
-import { useFetch } from '../useFetch';
+import React, { useEffect, useState } from 'react'
+import { useFetch } from '../useFetch'
 const url =
-  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5';
+  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
 
 // eslint-disable-next-line react/prop-types
-const HighTrain = ({ trainGenerated, trainOk }) => {
+const HighTrain = ({ trainGenerated }) => {
   const {
     timefirstBl,
     cantidadExcercisesFirstBl,
@@ -14,16 +14,16 @@ const HighTrain = ({ trainGenerated, trainOk }) => {
     cantidadExcercisesSecondBl,
     timeThirdBl,
     cantidadExcercisesThirdBl,
-  } = trainGenerated;
-  console.log('High train');
+  } = trainGenerated
 
-  const { data } = useFetch(url);
-  const excercises = data?.slice(0, cantidadExcercisesFirstBl);
-  console.log(excercises);
+  const { data } = useFetch(url)
+  const excercises = data?.slice(0, cantidadExcercisesFirstBl)
 
   const cantidadReps = () => {
-    return Math.floor(Math.random() * 5) + 3;
-  };
+    return Math.floor(Math.random() * 5) + 3
+  }
+
+  const reps = cantidadReps() * cantidadExcercisesFirstBl
 
   return (
     <div>
@@ -31,19 +31,19 @@ const HighTrain = ({ trainGenerated, trainOk }) => {
       <h3 className="my-2 font-semibold text-md">Amrap de: {timefirstBl}</h3>
       <ul>
         {excercises ? (
-          excercises.map((exc) => {
+          excercises.map((exc, index) => {
             return (
-              <li key={exc.id}>
+              <li key={index}>
                 {exc.name} x {cantidadReps() * cantidadExcercisesFirstBl} reps
               </li>
-            );
+            )
           })
         ) : (
-          <p>loading...</p>
+          <p>Loading...</p>
         )}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default HighTrain;
+export default HighTrain

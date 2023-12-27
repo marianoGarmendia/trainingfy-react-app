@@ -1,28 +1,27 @@
-import { useState } from 'react';
-import CardTrain from './CardTrain';
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+// import CardTrain from './CardTrain'
 
 const LabelTrain = ({ children }) => {
-  const [card, setCard] = useState(false);
-  const [train, setTrain] = useState('');
+  // const [card, setCard] = useState(false)
+  const [train, setTrain] = useState(children)
+  const path = children.replace(/\s/g, '')
+  const ruta = '/' + path
 
   return (
-    <>
-      {card ? (
-        <CardTrain train={train} setCard={setCard} />
-      ) : (
-        <div
-          className="bg-customInterior p-4 rounded-md mx-4 md:w-1/2 md:mx-auto my-4 flex justify-between hover:bg-sambayon hover:text-customInterior "
-          onClick={() => {
-            setTrain(children);
-            setCard(true);
-          }}
-        >
-          <p>{children}</p>
-          <img src="src/assets/angulo-derecho.svg" className="w-4" alt="" />
-        </div>
-      )}
-    </>
-  );
-};
+    <Link to={ruta}>
+      <div
+        className="bg-customInterior p-4 rounded-md mx-4 md:w-1/2 md:mx-auto my-4 flex justify-between hover:bg-sambayon hover:text-customInterior "
+        onClick={() => {
+          setTrain(children)
+          // setCard(true)
+        }}
+      >
+        <p>{train}</p>
+        <img src="src/assets/angulo-derecho.svg" className="w-4" alt="" />
+      </div>
+    </Link>
+  )
+}
 
-export default LabelTrain;
+export default LabelTrain

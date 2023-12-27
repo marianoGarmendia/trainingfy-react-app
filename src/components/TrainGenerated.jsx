@@ -1,22 +1,23 @@
-import HighTrain from './HighTrain';
+import { useParams } from 'react-router-dom'
+import HighTrain from './HighTrain'
 // import { useFetch } from '../useFetch';
 
-const TrainGenerated = ({ train, trainGenerated, trainOk }) => {
+const TrainGenerated = ({ trainGenerated }) => {
   //   const { data } = useFetch();
-  console.log('train generated');
+  const { trainName } = useParams()
+  const high = /High\s?Intensity/i
+  const functional = /Functional/i
+  const crossfit = /Crossfit/i
+  const powerWoman = /Power\s?woman/i
+
   return (
     <>
-      {train === 'High Intensity' ? (
-        <HighTrain trainGenerated={trainGenerated} trainOk={trainOk} />
-      ) : train === 'Crossfit' ? (
-        <div className="text-center">
-          <h2>{trainGenerated.crossModalidad}</h2>
-          <p>OTM X 12 minutos</p>
-          {/* <div>{data && console.log(data)}</div> */}
-        </div>
-      ) : null}
+      {high.test(trainName) && <HighTrain trainGenerated={trainGenerated} />}
+      {functional.test(trainName) && <h1>Train funcional</h1>}
+      {crossfit.test(trainName) && <h1>Train Crossfit</h1>}
+      {powerWoman.test(trainName) && <h1>Train Power Woman</h1>}
     </>
-  );
-};
+  )
+}
 
-export default TrainGenerated;
+export default TrainGenerated
