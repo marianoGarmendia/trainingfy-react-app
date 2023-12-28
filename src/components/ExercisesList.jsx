@@ -18,7 +18,7 @@ const ExerciseList = ({ core, onChangeProp }) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ExerciseList;
+export default ExerciseList

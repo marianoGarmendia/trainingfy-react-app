@@ -72,7 +72,6 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
   // Entrenamiento generado
 
   // Los valores que necesita el entrenamiento generado
-  console.log(train)
 
   const high = /High\s?Intensity/i
   const crossfit = 'Crossfit'
@@ -226,7 +225,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesFirstBl(e.target.value)
+                    setCantidadExcercisesFirstBl(parseInt(e.target.value))
                   }}
                 />
                 <p className="p-2 text-center">
@@ -272,7 +271,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesSecondBl(e.target.value)
+                    setCantidadExcercisesSecondBl(parseInt(e.target.value))
                   }}
                 />
                 <p className="p-2 text-center">
@@ -318,7 +317,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesThirdBl(e.target.value)
+                    setCantidadExcercisesThirdBl(parseInt(e.target.value))
                   }}
                 />
               </div>
@@ -571,7 +570,9 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesFirstBlFunctio(e.target.value)
+                    setCantidadExcercisesFirstBlFunctio(
+                      parseInt(e.target.value)
+                    )
                   }}
                 />
                 <p className="p-2 text-center">
@@ -618,7 +619,9 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
                 <ExerciseList
                   core={true}
                   onChangeProp={(e) => {
-                    setCantidadExcercisesSecondBlFunctio(e.target.value)
+                    setCantidadExcercisesSecondBlFunctio(
+                      parseInt(e.target.value)
+                    )
                   }}
                 />
               </div>
