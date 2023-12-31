@@ -5,12 +5,9 @@ import { Route, Routes } from 'react-router-dom'
 import CardTrain from './components/CardTrain'
 import TrainGenerated from './components/TrainGenerated'
 import { useState } from 'react'
-// import TrainGenerated from './components/TrainGenerated'
 
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})
-  // const trainOk = localStorage.getItem("trainOk")
-  // const trainOk = JSON.parselocalStorage.getItem("trainGenerated")
 
   return (
     <>
