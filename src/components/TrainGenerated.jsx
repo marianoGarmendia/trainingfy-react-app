@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom'
 import HighTrain from './HighTrain'
-// import { useFetch } from '../useFetch';
+import CrossTrain from './CrossTrain'
+import FunctioTrain from './FunctioTrain'
+import PowerTrain from './PowerTrain'
 
 const TrainGenerated = ({ trainGenerated }) => {
-  //   const { data } = useFetch();
   const { trainName } = useParams()
   const high = /High\s?Intensity/i
   const functional = /Functional/i
@@ -13,9 +14,15 @@ const TrainGenerated = ({ trainGenerated }) => {
   return (
     <>
       {high.test(trainName) && <HighTrain trainGenerated={trainGenerated} />}
-      {functional.test(trainName) && <h1>Train funcional</h1>}
-      {crossfit.test(trainName) && <h1>Train Crossfit</h1>}
-      {powerWoman.test(trainName) && <h1>Train Power Woman</h1>}
+      {functional.test(trainName) && (
+        <FunctioTrain trainGenerated={trainGenerated} />
+      )}
+      {crossfit.test(trainName) && (
+        <CrossTrain trainGenerated={trainGenerated} />
+      )}
+      {powerWoman.test(trainName) && (
+        <PowerTrain trainGenerated={trainGenerated} />
+      )}
     </>
   )
 }

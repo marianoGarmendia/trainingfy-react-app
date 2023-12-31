@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import CardTrain from './CardTrain'
 
 const LabelTrain = ({ children }) => {
-  // const [card, setCard] = useState(false)
   const [train, setTrain] = useState(children)
   const path = children.replace(/\s/g, '')
   const ruta = '/' + path
@@ -14,7 +12,6 @@ const LabelTrain = ({ children }) => {
         className="bg-customInterior p-4 rounded-md mx-4 md:w-1/2 md:mx-auto my-4 flex justify-between hover:bg-sambayon hover:text-customInterior "
         onClick={() => {
           setTrain(children)
-          // setCard(true)
         }}
       >
         <p>{train}</p>

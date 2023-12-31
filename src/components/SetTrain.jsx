@@ -9,9 +9,6 @@ import { useNavigate } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
-  // const [trainOk, setTrainOk] = useState(false)
-  // const [trainGenerated, setTrainGenerated] = useState({})
-
   // Seteando la cantidad de ejercicios por bloque High
   const [cantidadExcercisesFirstBl, setCantidadExcercisesFirstBl] = useState(2)
   const [cantidadExcercisesSecondBl, setCantidadExcercisesSecondBl] =
@@ -74,8 +71,8 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
   // Los valores que necesita el entrenamiento generado
 
   const high = /High\s?Intensity/i
-  const crossfit = 'Crossfit'
-  const functional = 'Functional'
+  const crossfit = /Crossfit/i
+  const functional = /functional/i
   const powerWoman = /Power\s?woman/i
 
   const buttonClass = `bg-sambayon text-customInterior text-center w-2/3  sm:mx-2 mx-auto mt-2 hover:scale-105 rounded-sm p-2 font-semibold hover:cursor-pointer outline-none focus:ring-2 focus:ring-white focus:text-white  `
@@ -116,17 +113,17 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
   const handleSubmitCross = (e) => {
     e.preventDefault()
     const campos = [crossModalidad, wodModalidad, crossTime, focusTrainCross]
-    const trainCompleted = {
-      crossModalidad,
-      wodModalidad,
-      crossTime,
-      focusTrainCross,
-    }
+
     const camposCompletos = campos.every(Boolean)
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
       ? setMessageErrorCross(false) &
-        setTrainGenerated(trainCompleted) &
+        setTrainGenerated({
+          crossModalidad,
+          wodModalidad,
+          crossTime,
+          focusTrainCross,
+        }) &
         setTrainOk(true) &
         navigate('generatedTrain') &
         setTrainOk(true)
@@ -145,7 +142,12 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
       ? setMessageErrorFunctio(false) &
-        setTrainGenerated(campos) &
+        setTrainGenerated({
+          timefirstBlFunctio,
+          cantidadExcercisesFirstBlFunctio,
+          timeSecondBlFunctio,
+          cantidadExcercisesSecondBlFunctio,
+        }) &
         navigate('generatedTrain') &
         setTrainOk(true)
       : setMessageErrorFunctio(true)
@@ -158,7 +160,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
     // eslint-disable-next-line no-unused-expressions
     camposCompletos
       ? setMessageErrorPower(false) &
-        setTrainGenerated(campos) &
+        setTrainGenerated({ powerModalidad, timePower }) &
         navigate('generatedTrain') &
         setTrainOk(true)
       : setMessageErrorPower(true)
@@ -324,7 +326,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
               {messageErrorHigh ? <SubmitError /> : null}
               <SubmitBtn></SubmitBtn>
             </form>
-          ) : train === crossfit ? (
+          ) : crossfit.test(train) ? (
             <form onSubmit={handleSubmitCross}>
               <p className="p-2 text-center">Elige el primer Bloque</p>
               <div className="flex flex-col sm:flex-row justify-evenly  w-full">
@@ -523,7 +525,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
               </div>
               <SubmitBtn />
             </form>
-          ) : train === functional ? (
+          ) : functional.test(train) ? (
             <form onSubmit={handleSubmitFunctio}>
               <p className="p-2 text-center">
                 Elige el tiempo del primer bloque
@@ -664,7 +666,7 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
                         : buttonClass
                     }
                     onClickProp={(e) => {
-                      setCrossModalidad(e.target.defaultValue)
+                      setPowerModalidad(e.target.defaultValue)
                     }}
                     defaultValue="Intensa"
                   />

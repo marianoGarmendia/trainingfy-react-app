@@ -7,7 +7,6 @@ const url =
 
 // eslint-disable-next-line react/prop-types
 const HighTrain = ({ trainGenerated }) => {
-  const [dataFetch, setDataFetch] = useState(null)
   const {
     timefirstBl,
     cantidadExcercisesFirstBl,
@@ -23,6 +22,8 @@ const HighTrain = ({ trainGenerated }) => {
   }
 
   const { data } = useFetch(url)
+
+  // Llamar al localStorage
 
   const excercises = (endIndex) => {
     const num = Math.floor(Math.random() * 23)

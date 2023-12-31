@@ -4,13 +4,14 @@ import PageInit from './components/PageInit'
 import { Route, Routes } from 'react-router-dom'
 import CardTrain from './components/CardTrain'
 import TrainGenerated from './components/TrainGenerated'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useFetch } from './useFetch'
 // import TrainGenerated from './components/TrainGenerated'
+const url =
+  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
 
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})
-  // const trainOk = localStorage.getItem("trainOk")
-  // const trainOk = JSON.parselocalStorage.getItem("trainGenerated")
 
   return (
     <>
