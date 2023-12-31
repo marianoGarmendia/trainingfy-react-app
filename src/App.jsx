@@ -4,11 +4,7 @@ import PageInit from './components/PageInit'
 import { Route, Routes } from 'react-router-dom'
 import CardTrain from './components/CardTrain'
 import TrainGenerated from './components/TrainGenerated'
-import { useEffect, useState } from 'react'
-import { useFetch } from './useFetch'
-// import TrainGenerated from './components/TrainGenerated'
-const url =
-  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
+import { useState } from 'react'
 
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})

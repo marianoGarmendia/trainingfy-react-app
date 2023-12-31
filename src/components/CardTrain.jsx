@@ -1,5 +1,5 @@
 import SetTrain from './SetTrain'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom'
 
 const CardTrain = ({ setTrainGenerated, trainGenerated }) => {
