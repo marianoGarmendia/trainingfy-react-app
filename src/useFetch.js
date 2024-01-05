@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 const options = {
   method: 'GET',
   headers: {
-    'X-RapidAPI-Key': 'e554205daamsh34597c597b1dee3p18c0b4jsnebf507c6e526',
+    'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
   },
 }
