@@ -8,6 +8,9 @@ import { useState } from 'react'
 
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})
+  fetch(`/.netlify/functions/fetch-excercises?name="marianodev"`)
+    .then((res) => res.json())
+    .then((response) => console.log(response))
 
   return (
     <>
