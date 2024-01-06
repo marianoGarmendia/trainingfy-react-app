@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-const API_KEY = import.meta.env.REACT_APP_API_KEY
+const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY
 
 // const url =
 //   'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
