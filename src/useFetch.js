@@ -16,7 +16,7 @@ export function useFetch(url) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:8888/.netlify/functions/fetch-excercises?name=https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=29`
+      `https://trainingfy.netlify.app/.netlify/functions/fetch-excercises?name=https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=29`
     )
       .then((res) => res.json())
       .then((data) => setData(data))
