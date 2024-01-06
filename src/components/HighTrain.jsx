@@ -34,8 +34,7 @@ const HighTrain = ({ trainGenerated }) => {
   const excercisesSecondBl = excercises(cantidadExcercisesSecondBl)
   const excercisesThirdBl = excercises(cantidadExcercisesThirdBl)
   // const excercisesFirstBl = data?.slice(0, cantidadExcercisesFirstBl)
-  console.log(excercisesFirsBl)
-  console.log(excercisesSecondBl)
+
   return (
     <div className="text-center py-4">
       <h2 className="font-bold ">Set Core</h2>
