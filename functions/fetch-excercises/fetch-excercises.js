@@ -9,7 +9,7 @@ const options = {
 }
 
 const handler = async (event) => {
-  const { url } = event.queryStringParameters.name
+  const url = event.queryStringParameters.name
   const data = await fetch(url, options)
     .then((res) => res.json())
     .then((response) => {
