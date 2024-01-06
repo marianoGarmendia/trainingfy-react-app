@@ -9,6 +9,7 @@ import { useState } from 'react'
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})
 
+  // console.log(process.env.VITE_REACT_APP_API_KEY)
   return (
     <>
       <Header />{' '}

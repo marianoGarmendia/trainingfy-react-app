@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useFetch } from '../useFetch'
 const url =
-  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
+  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=29'
 
 // eslint-disable-next-line react/prop-types
 const HighTrain = ({ trainGenerated }) => {

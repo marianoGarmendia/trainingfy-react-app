@@ -1,7 +1,7 @@
 import { useFetch } from '../useFetch'
 
 const url =
-  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
+  'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=10'
 
 const PowerTrain = ({ trainGenerated }) => {
   const { powerModalidad, timePower } = trainGenerated
