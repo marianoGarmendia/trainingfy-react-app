@@ -9,9 +9,7 @@ export function useFetch(url) {
   useEffect(() => {
     fetch(
       `/.netlify/functions/fetch-excercises?name="https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5"`
-    )
-      .then((res) => res.json())
-      .then((response) => setData(response))
+    ).then((res) => setData(res))
   }, [])
   // useEffect(() => {
   //   fetch(url, options)
