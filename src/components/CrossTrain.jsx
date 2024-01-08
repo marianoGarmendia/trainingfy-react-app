@@ -26,24 +26,26 @@ const CrossTrain = ({ trainGenerated }) => {
 
   return (
     <>
-      {excercisesFirsBl && (
-        <div className="text-center my-4">
-          <h2 className="font-bold text-lg">{crossModalidad}</h2>
-          <h3 className="my-2 font-semibold ">
-            {wodModalidad.includes('Por rondas') ? '5 rounds' : wodModalidad}
-          </h3>
-          <h3 className="font-semibold my-3">Tiempo: {crossTime} </h3>
-          <ul>
-            {excercisesFirsBl.map((exc, index) => {
+      <div className="text-center my-4">
+        <h2 className="font-bold text-lg">{crossModalidad}</h2>
+        <h3 className="my-2 font-semibold ">
+          {wodModalidad.includes('Por rondas') ? '5 rounds' : wodModalidad}
+        </h3>
+        <h3 className="font-semibold my-3">Tiempo: {crossTime} </h3>
+        <ul>
+          {excercisesFirsBl ? (
+            excercisesFirsBl.map((exc, index) => {
               return (
                 <li key={index}>
                   {exc.name} x {cantidadReps(3)} reps
                 </li>
               )
-            })}
-          </ul>
-        </div>
-      )}
+            })
+          ) : (
+            <p>...Loading</p>
+          )}
+        </ul>
+      </div>
     </>
   )
 }

@@ -18,7 +18,7 @@ const PowerTrain = ({ trainGenerated }) => {
   return (
     <div className="text-center ">
       <h2 className="my-4 font-semibold text-lg">{powerModalidad}</h2>
-      <h3 className="my-2 font-semibold">Amrap: {timePower} minutos</h3>
+      <h3 className="my-2 font-semibold">Amrap: {timePower} </h3>
 
       <ul>
         {excercises ? (
