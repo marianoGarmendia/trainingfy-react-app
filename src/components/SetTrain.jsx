@@ -4,7 +4,6 @@ import { useState } from 'react'
 import SubmitBtn from './SubmitBtn'
 import InputEl from './InputEl'
 import SubmitError from './SubmitError'
-import { useFetch } from '../useFetch'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -75,15 +74,6 @@ const SetTrain = ({ train, setTrainGenerated, setTrainOk }) => {
   const crossfit = /Crossfit/i
   const functional = /functional/i
   const powerWoman = /Power\s?woman/i
-
-  // if (high.test(train)) {
-  //   const { data } = useFetch(
-  //     'https://exercisedb.p.rapidapi.com/exercises/bodyPart/cardio?limit=5'
-  //   )
-  //   const excercises = data && data.slice(0, cantidadExcercisesFirstBl)
-  //   excercises &&
-  //     localStorage.setItem('dataFetchHigh', JSON.stringify(excercises))
-  // }
 
   const buttonClass = `bg-sambayon text-customInterior text-center w-2/3  sm:mx-2 mx-auto mt-2 hover:scale-105 rounded-sm p-2 font-semibold hover:cursor-pointer outline-none focus:ring-2 focus:ring-white focus:text-white  `
 
