@@ -26,7 +26,7 @@ const handler = async (event) => {
   }
 }
 
-export { handler }
+module.exports = { handler }
 
 // try {
 //   const subject = event.queryStringParameters.name || 'World'
