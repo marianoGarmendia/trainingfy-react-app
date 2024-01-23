@@ -15,7 +15,7 @@ const LabelTrain = ({ children }) => {
         }}
       >
         <p>{train}</p>
-        <img src="src/assets/angulo-derecho.svg" className="w-4" alt="" />
+        <img src="image/angulo-derecho.svg" className="w-4" alt="" />
       </div>
     </Link>
   )
