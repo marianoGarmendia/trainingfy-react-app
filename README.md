@@ -18,7 +18,7 @@
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
 <div align="center">
-<img src="./img-readme/traningfy-page-uno.png" width="300px">
-<img src="./img-readme/trainingfy-page-dos.png" width="300px">
+<img src="./img-readme/traningfy-page-uno.png" width="400px">
+<img src="./img-readme/trainingfy-page-dos.png" width="400px">
 </div>
 
