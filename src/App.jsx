@@ -5,6 +5,8 @@ import { Route, Routes } from 'react-router-dom'
 import CardTrain from './components/CardTrain'
 import TrainGenerated from './components/TrainGenerated'
 import { useState } from 'react'
+import HomePage from './components/HomePage'
+import Register from './components/Register'
 
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})
@@ -14,7 +16,9 @@ function App() {
     <>
       <Header />{' '}
       <Routes>
-        <Route exact path="/" element={<PageInit />}></Route>
+        <Route exact path="/" element={<HomePage />}></Route>
+        <Route exact path="/register" element={<Register />}></Route>
+        <Route exact path="/train" element={<PageInit />}></Route>
         <Route
           exact
           path="/:trainName"
