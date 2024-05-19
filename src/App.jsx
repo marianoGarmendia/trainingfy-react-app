@@ -1,5 +1,5 @@
 import Header from './components/Header'
-import './App.css'
+
 import PageInit from './components/PageInit'
 import { Route, Routes } from 'react-router-dom'
 import CardTrain from './components/CardTrain'
@@ -9,7 +9,6 @@ import { useState } from 'react'
 function App() {
   const [trainGenerated, setTrainGenerated] = useState({})
 
-  // console.log(process.env.VITE_REACT_APP_API_KEY)
   return (
     <>
       <Header />{' '}

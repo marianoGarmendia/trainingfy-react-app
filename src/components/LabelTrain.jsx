@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import imgAngulo from '../image/angulo-derecho.svg'
 
 const LabelTrain = ({ children }) => {
   const [train, setTrain] = useState(children)
@@ -15,7 +16,7 @@ const LabelTrain = ({ children }) => {
         }}
       >
         <p>{train}</p>
-        <img src="../image/angulo-derecho.svg" className="w-4" alt="" />
+        <img src={imgAngulo} className="w-4" alt="" />
       </div>
     </Link>
   )
