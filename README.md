@@ -1,11 +1,24 @@
-# React + Vite
+### Generador de entrenamientos
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⭐ Selecciona tu actividad preferida
 
-Currently, two official plugins are available:
+⌚ Configura tiempo, ejercicios e intensidad
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Listo!  
 
-Esta app es un generador de entrenamientos segun las caracteristicas de la actividad, consume una api gratuita de ejercicios
-Se utilizo react-router , useState, useEffect, customEffect, fetch
+---
+#### Proyecto realizado con:
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+
+#### Desplegado en: 
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+
+<div align="center">
+<img src="./img-readme/traningfy-page-uno.png" width="400px">
+<img src="./img-readme/trainingfy-page-dos.png" width="400px">
+</div>
+
