@@ -1,6 +1,7 @@
 import SetTrain from './SetTrain'
 import { useState } from 'react'
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom'
+import imgAngulo from '../image/angulo-izquierdo.svg'
 
 const CardTrain = ({ setTrainGenerated }) => {
   const { trainName } = useParams()
@@ -13,7 +14,7 @@ const CardTrain = ({ setTrainGenerated }) => {
     <div className="bg-customInterior rounded-md p-4 md:w-2/3  md:mx-auto mx-4  my-4 flex flex-col">
       <div className="flex mb-5">
         <Link to="/">
-          <img src="../image/angulo-izquierdo.svg" className="w-4" alt="" />
+          <img src={imgAngulo} className="w-4" alt="" />
         </Link>
         <p className="p-2 font-semibold text-lg mx-auto ">{title}</p>
       </div>
