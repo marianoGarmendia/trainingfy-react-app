@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 function HomePage() {
   return (
     <div>
-      <div className="flex items-center justify-center">
-        <div className="bg-custombg border-[4px] border-sambayon rounded-2xl  transition-all duration-200">
-          <div className="mx-auto flex items-center space-y-4 py-16 px-12 font-semibold text-gray-500 flex-col">
+      <div className="flex items-center justify-center ">
+        <div className=" backdrop-blur-sm border-[4px] border-sambayon rounded-2xl  transition-all duration-200">
+          <div className="mx-auto flex items-center space-y-4 py-10 px-12 font-semibold text-gray-500 flex-col">
             <h1 className="text-white text-2xl">
               Ingresa a <span className="text-sambayon">Trainingfy</span>
             </h1>
@@ -39,7 +39,7 @@ function HomePage() {
               </Link>
             </p>
             <Link
-              to="/train"
+              to="/presentacion"
               className="bg-customInterior p-2 rounded-md hover:bg-sambayon"
             >
               Entrá sin registrarte

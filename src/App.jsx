@@ -4,20 +4,42 @@ import PageInit from './components/PageInit'
 import { Route, Routes } from 'react-router-dom'
 import CardTrain from './components/CardTrain'
 import TrainGenerated from './components/TrainGenerated'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { trainContext } from './context/TrainProvider'
 import HomePage from './components/HomePage'
 import Register from './components/Register'
+import Presentacion from './pages/Presentation'
+import PageCero from './pages/PageCero'
+import PageUno from './pages/PageUno'
+import PageTwo from './pages/PageTwo'
+import PageThree from './pages/PageThree'
+import PageFour from './pages/PageFour'
+import PageTrainGenerated from './pages/PageTrainGenerated'
+// import { trainContext } from './context/TrainProvider'
 
 function App() {
+  const trainProvider = useContext(trainContext)
+  const { train } = trainProvider
   const [trainGenerated, setTrainGenerated] = useState({})
 
   return (
-    <>
+    <div>
       <Header />{' '}
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
+        <Route exact path="/presentacion" element={<Presentacion />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route exact path="/train" element={<PageInit />}></Route>
+        <Route exact path="/page-cero" element={<PageCero />}></Route>
+        <Route exact path="/page-one" element={<PageUno />}></Route>
+        <Route exact path="/page-two" element={<PageTwo />}></Route>
+        <Route exact path="/page-three" element={<PageThree />}></Route>
+        <Route exact path="/page-four" element={<PageFour />}></Route>
+        <Route
+          exact
+          path="/page-trainGenerated"
+          element={<PageTrainGenerated workout={train} />}
+        ></Route>
         <Route
           exact
           path="/:trainName"
@@ -37,7 +59,7 @@ function App() {
         </Route>
         {/* <Route exact path="/train/:trainName" element={<TrainGenerated />}></Route> */}
       </Routes>
-    </>
+    </div>
   )
 }
 
