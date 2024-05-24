@@ -2,9 +2,7 @@ import Header from './components/Header'
 
 import PageInit from './components/PageInit'
 import { Route, Routes } from 'react-router-dom'
-import CardTrain from './components/CardTrain'
-import TrainGenerated from './components/TrainGenerated'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { trainContext } from './context/TrainProvider'
 import HomePage from './components/HomePage'
 import Register from './components/Register'
@@ -15,12 +13,10 @@ import PageTwo from './pages/PageTwo'
 import PageThree from './pages/PageThree'
 import PageFour from './pages/PageFour'
 import PageTrainGenerated from './pages/PageTrainGenerated'
-// import { trainContext } from './context/TrainProvider'
 
 function App() {
   const trainProvider = useContext(trainContext)
   const { train } = trainProvider
-  const [trainGenerated, setTrainGenerated] = useState({})
 
   return (
     <div>
@@ -40,24 +36,6 @@ function App() {
           path="/page-trainGenerated"
           element={<PageTrainGenerated workout={train} />}
         ></Route>
-        <Route
-          exact
-          path="/:trainName"
-          element={
-            <CardTrain
-              setTrainGenerated={setTrainGenerated}
-              trainGenerated={trainGenerated}
-            />
-          }
-        >
-          <Route
-            path="generatedTrain"
-            element={
-              <TrainGenerated trainGenerated={trainGenerated}></TrainGenerated>
-            }
-          ></Route>
-        </Route>
-        {/* <Route exact path="/train/:trainName" element={<TrainGenerated />}></Route> */}
       </Routes>
     </div>
   )
