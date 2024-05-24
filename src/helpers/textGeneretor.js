@@ -1,9 +1,12 @@
 import { HfInference } from '@huggingface/inference'
+import { hfAccessToken } from '../../functions/hf-accesToke'
 
 // import { config } from 'dotenv'
 // config()
 
-const hf = new HfInference(import.meta.env.VITE_ACCESS_TOKEN)
+const ACCES_TOKEN = hfAccessToken
+
+const hf = new HfInference(ACCES_TOKEN)
 
 export const textGenerator = async (prompt) => {
   const result = await hf.chatCompletion({
