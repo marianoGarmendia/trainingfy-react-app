@@ -5,7 +5,8 @@ const Header = () => {
         Training<span className="text-sambayon">Fy</span>
       </h1>
       <h4 className="font-semibold text-lg p-2">
-        Armá tu propio entrenamiento
+        Armá tu entrenamiento con{' '}
+        <span className="font-bold text-sambayon">IA</span>
       </h4>
     </header>
   )
