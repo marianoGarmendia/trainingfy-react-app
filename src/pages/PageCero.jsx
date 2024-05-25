@@ -2,12 +2,14 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import ButtonTrain from '../components/ButtonTrain'
 import { trainContext } from '../context/TrainProvider'
+import BarProgress from '../components/BarProgress'
+
 function PageUno() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
 
   return (
-    <div className="flex justify-center flex-col items-center gap-12">
+    <div className="flex  flex-col items-center md:justify-around gap-6 justify-start   h-2/3 ">
       <h1 className="font-bold">
         ¿ Que objetivo tenés para el entrenamiento de hoy ?
       </h1>
@@ -28,6 +30,7 @@ function PageUno() {
           Algo variado
         </ButtonTrain>
       </Link>
+      <BarProgress progress={0}></BarProgress>
     </div>
   )
 }

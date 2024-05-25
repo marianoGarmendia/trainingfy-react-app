@@ -1,7 +1,7 @@
 import Header from './components/Header'
 
 import PageInit from './components/PageInit'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { trainContext } from './context/TrainProvider'
 import HomePage from './components/HomePage'
@@ -13,13 +13,14 @@ import PageTwo from './pages/PageTwo'
 import PageThree from './pages/PageThree'
 import PageFour from './pages/PageFour'
 import PageTrainGenerated from './pages/PageTrainGenerated'
+import BarProgress from './components/BarProgress'
 
 function App() {
   const trainProvider = useContext(trainContext)
   const { train } = trainProvider
 
   return (
-    <div>
+    <div className=" h-screen">
       <Header />{' '}
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
