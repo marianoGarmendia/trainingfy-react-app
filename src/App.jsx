@@ -13,13 +13,14 @@ import PageTwo from './pages/PageTwo'
 import PageThree from './pages/PageThree'
 import PageFour from './pages/PageFour'
 import PageTrainGenerated from './pages/PageTrainGenerated'
+// import { trainContext } from './context/TrainProvider'
 
 function App() {
   const trainProvider = useContext(trainContext)
   const { train } = trainProvider
 
   return (
-    <div>
+    <div className=" h-screen">
       <Header />{' '}
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>

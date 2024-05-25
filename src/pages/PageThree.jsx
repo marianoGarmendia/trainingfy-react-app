@@ -2,12 +2,13 @@ import ButtonTrain from '../components/ButtonTrain'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { trainContext } from '../context/TrainProvider'
+import BarProgress from '../components/BarProgress'
 
 function PageThree() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
   return (
-    <div className="flex justify-center flex-col items-center gap-12">
+    <div className="flex  flex-col items-center md:justify-around gap-6 justify-start   h-2/3">
       <h1 className="font-bold">¿ Cuánto tiempo tenés para entrenar hoy ?</h1>
       <Link
         to="/page-four"
@@ -22,6 +23,7 @@ function PageThree() {
         <ButtonTrain value={'30 minutos'}>30 minutos le meto</ButtonTrain>
         <ButtonTrain value={'40 a 60 minutos'}>Tengo tiempo dale!</ButtonTrain>
       </Link>
+      <BarProgress progress={60}></BarProgress>
     </div>
   )
 }

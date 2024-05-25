@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Presentacion() {
   return (
-    <div className="text-center tracking-wide px-10">
+    <div className="text-center tracking-wide w-2/3 mx-auto px-10">
       <h1>TrainingFy es una app que soluciona tu entrenamiento</h1>
       <p>
         Olvidate de esos dias donde no sabes que entrenar y te aburre la rutina
