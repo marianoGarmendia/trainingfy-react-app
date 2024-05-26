@@ -18,7 +18,7 @@ function App() {
   const { train } = trainProvider
 
   return (
-    <div className=" h-screen">
+    <div className=" h-screen rubik-regular">
       <Header />{' '}
       <div>
         <img src="" alt="" />
