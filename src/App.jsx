@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import { useContext } from 'react'
 import { trainContext } from './context/TrainProvider'
 import HomePage from './components/HomePage'
-import Register from './components/Register'
+// import Register from './components/Register'
 import Presentacion from './pages/Presentation'
 import PageCero from './pages/PageCero'
 import PageUno from './pages/PageUno'
@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
         <Route exact path="/presentacion" element={<Presentacion />}></Route>
-        <Route exact path="/register" element={<Register />}></Route>
+        {/* <Route exact path="/register" element={<Register />}></Route> */}
 
         <Route exact path="/page-cero" element={<PageCero />}></Route>
         <Route exact path="/page-one" element={<PageUno />}></Route>
