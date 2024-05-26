@@ -18,7 +18,7 @@ function App() {
   const { train } = trainProvider
 
   return (
-    <div className=" h-screen ubuntu-regular">
+    <div className=" h-screen rubik-regular">
       <Header />{' '}
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
