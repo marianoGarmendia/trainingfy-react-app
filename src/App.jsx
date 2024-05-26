@@ -20,6 +20,9 @@ function App() {
   return (
     <div className=" h-screen">
       <Header />{' '}
+      <div>
+        <img src="" alt="" />
+      </div>
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
         <Route exact path="/presentacion" element={<Presentacion />}></Route>
