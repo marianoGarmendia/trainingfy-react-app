@@ -12,7 +12,7 @@ import PageTrainGenerated from './pages/PageTrainGenerated'
 
 function App() {
   return (
-    <div className=" h-screen rubik-regular text-[#eee]">
+    <div className=" place-content-center h-screen rubik-regular text-[#eee]">
       {/* <Header />{' '} */}
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>

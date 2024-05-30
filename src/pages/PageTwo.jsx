@@ -10,7 +10,7 @@ function PageTwo() {
   const intensidad = ['suave', 'moderada', 'A darlo todo']
 
   return (
-    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+    <div className="flex h-2/3  flex-col items-center  gap-6 justify-around ">
       <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
         <h1 className="rubik-md text-center">¿ Para qué intensidad estás ?</h1>
         <Link
@@ -32,9 +32,8 @@ function PageTwo() {
             })}
           </div>
         </Link>
-
-        <BarProgress progress={40}></BarProgress>
       </div>
+      <BarProgress progress={40}></BarProgress>
     </div>
   )
 }

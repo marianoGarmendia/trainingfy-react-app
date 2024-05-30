@@ -67,20 +67,22 @@ function PageTrainGenerated() {
               Inicio
             </Link>
           </div>
-          <div className="rounded-xl border border-white flex justify-around     bg-[#eee]   ">
-            <Items title={objetivo}>
-              <ModalidadSVG></ModalidadSVG>
-            </Items>
-            <Items title={intensidad}>
-              <IntensidadSVG></IntensidadSVG>
-            </Items>
-            <Items title={duracion}>
-              <DuracionSVG></DuracionSVG>
-            </Items>
-            <Items title={equipamiento}>
-              <EquipamientoSVG></EquipamientoSVG>
-            </Items>
-          </div>
+          {!loading && (
+            <div className="rounded-xl border border-white flex justify-around     bg-[#eee]   ">
+              <Items title={objetivo}>
+                <ModalidadSVG></ModalidadSVG>
+              </Items>
+              <Items title={intensidad}>
+                <IntensidadSVG></IntensidadSVG>
+              </Items>
+              <Items title={duracion}>
+                <DuracionSVG></DuracionSVG>
+              </Items>
+              <Items title={equipamiento}>
+                <EquipamientoSVG></EquipamientoSVG>
+              </Items>
+            </div>
+          )}
 
           <article
             className={

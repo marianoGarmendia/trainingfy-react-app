@@ -10,7 +10,7 @@ function PageUno() {
   const sector = ['Piernas', 'Brazos', 'Abdominales', 'Cuerpo entero']
 
   return (
-    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+    <div className="flex h-2/3 my-auto  flex-col items-center justify-around gap-6  ">
       <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
         <h1 className="rubik-md text-center">
           ¿ Que parte querés trabajar más ?
@@ -34,9 +34,8 @@ function PageUno() {
             })}
           </div>
         </Link>
-
-        <BarProgress progress={20}></BarProgress>
       </div>
+      <BarProgress progress={20}></BarProgress>
     </div>
   )
 }
