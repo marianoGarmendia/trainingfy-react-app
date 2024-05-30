@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { useContext } from 'react'
-import { trainContext } from './context/TrainProvider'
+
 import HomePage from './pages/HomePage'
 // import Register from './components/Register'
 import Presentacion from './pages/Presentation'
@@ -12,9 +11,6 @@ import PageFour from './pages/PageFour'
 import PageTrainGenerated from './pages/PageTrainGenerated'
 
 function App() {
-  const trainProvider = useContext(trainContext)
-  const { train } = trainProvider
-
   return (
     <div className=" h-screen rubik-regular text-[#eee]">
       {/* <Header />{' '} */}

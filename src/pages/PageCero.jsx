@@ -1,5 +1,4 @@
-import { useContext, useRef, useState, useEffect } from 'react'
-import { motion, useInView, inView } from 'framer-motion'
+import { useContext } from 'react'
 
 import { Link } from 'react-router-dom'
 import ButtonTrain from '../components/ButtonTrain'
