@@ -7,26 +7,36 @@ import BarProgress from '../components/BarProgress'
 function PageFour() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
+  const equipamiento = ['maquinas', 'peso corporal', 'mancuernas']
 
   return (
-    <div className="flex  flex-col items-center md:justify-around gap-6 justify-start   h-2/3">
-      <h1 className="font-bold">¿ Con que entrenamos hoy ?</h1>
-      <Link
-        to="/page-trainGenerated"
-        className=" grid md:grid-cols-3 gap-y-3 gap-x-3 w-[70%] mx-auto"
-        onClick={(e) => {
-          setTrain((prevTrain) => {
-            return { ...prevTrain, equipamiento: e.target.value }
-          })
-        }}
-      >
-        <ButtonTrain value={'con maquinas'}>Máquinas ⚙️</ButtonTrain>
-        <ButtonTrain value={'con peso corporal'}>Peso corporal 🤸 </ButtonTrain>
-        <ButtonTrain value={'mancuernas, barras, discos, medball, cajones'}>
-          Elementos 🏋️
-        </ButtonTrain>
-      </Link>
-      <BarProgress progress={80}></BarProgress>
+    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
+        <h1 className="rubik-md text-center">
+          ¿ Que equipamiento querés usar ?
+        </h1>
+        <Link
+          to="/page-trainGenerated"
+          className=" "
+          onClick={(e) => {
+            setTrain((prevTrain) => {
+              return { ...prevTrain, equipamiento: e.target.value }
+            })
+          }}
+        >
+          <div className="flex flex-col gap-4  ">
+            {equipamiento.map((mod, idx) => {
+              return (
+                <ButtonTrain value={mod} key={idx}>
+                  {mod}
+                </ButtonTrain>
+              )
+            })}
+          </div>
+        </Link>
+
+        <BarProgress progress={80}></BarProgress>
+      </div>
     </div>
   )
 }

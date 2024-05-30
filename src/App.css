@@ -2,22 +2,35 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #161714;
   /* height: 100vh; */
-  background-image: url('./image/bg-ia-uno.jpg');
+  /* background-image: url('./image/bg-ia-uno.jpg'); */
+  /* background-size: cover; */
+  /* background-position: center center; */
+  /* background-repeat: no-repeat; */
+}
+
+.home {
+  position: relative;
+  background-image: url('./image/bg-home.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  z-index: 0;
 }
-
-body::before {
+.home::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Ajusta el color y la opacidad */
+  background: rgba(0, 0, 0, 0.7);
   z-index: -1;
+}
+
+.card {
+  background-image: url('./image/img-card-inicio.jpg');
 }
 
 .rubik-regular {
@@ -27,13 +40,31 @@ body::before {
   font-style: normal;
 }
 
-.scrollable::-webkit-scrollbar {
-  /* width: 12px;
-  height: 12px; */
-  display: none;
+.rubik-md {
+  font-family: 'Rubik', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
-/* .scrollable::-webkit-scrollbar-track {
+.rubik-xl {
+  font-family: 'Rubik', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 12px;
+  /* height: 12px; */
+  scroll-behavior: smooth;
+  /* scrollbar-color: #161714; */
+  /* scrollbar-arrow-color: #161714; */
+
+  /* display: none; */
+}
+
+.scrollable::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
@@ -45,4 +76,8 @@ body::before {
 
 .scrollable::-webkit-scrollbar-thumb:hover {
   background: #555;
-} */
+}
+
+.wod_container[data-is-off='true'] {
+  place-content: center;
+}

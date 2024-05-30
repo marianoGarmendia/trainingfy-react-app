@@ -7,23 +7,35 @@ import BarProgress from '../components/BarProgress'
 function PageThree() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
+  const tiempo = ['Un ratito', '30 minutos', '40 a 60 minutos']
   return (
-    <div className="flex  flex-col items-center md:justify-around gap-6 justify-start   h-2/3">
-      <h1 className="font-bold">¿ Cuánto tiempo tenés para entrenar hoy ?</h1>
-      <Link
-        to="/page-four"
-        className=" grid md:grid-cols-3 gap-y-3 gap-x-3 w-[70%] mx-auto"
-        onClick={(e) => {
-          setTrain((prevTrain) => {
-            return { ...prevTrain, tiempo: e.target.value }
-          })
-        }}
-      >
-        <ButtonTrain value={'12 a 18 minutos'}>Un ratito</ButtonTrain>
-        <ButtonTrain value={'30 minutos'}>30 minutos le meto</ButtonTrain>
-        <ButtonTrain value={'40 a 60 minutos'}>Tengo tiempo dale!</ButtonTrain>
-      </Link>
-      <BarProgress progress={60}></BarProgress>
+    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
+        <h1 className="rubik-md text-center">
+          ¿ Que objetivo tenés para el entrenamiento de hoy ?
+        </h1>
+        <Link
+          to="/page-four"
+          className=" "
+          onClick={(e) => {
+            setTrain((prevTrain) => {
+              return { ...prevTrain, duracion: e.target.value }
+            })
+          }}
+        >
+          <div className="flex flex-col gap-4  ">
+            {tiempo.map((mod, idx) => {
+              return (
+                <ButtonTrain value={mod} key={idx}>
+                  {mod}
+                </ButtonTrain>
+              )
+            })}
+          </div>
+        </Link>
+
+        <BarProgress progress={60}></BarProgress>
+      </div>
     </div>
   )
 }

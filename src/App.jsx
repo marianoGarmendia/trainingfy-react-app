@@ -1,9 +1,7 @@
-import Header from './components/Header'
-
 import { Route, Routes } from 'react-router-dom'
 import { useContext } from 'react'
 import { trainContext } from './context/TrainProvider'
-import HomePage from './components/HomePage'
+import HomePage from './pages/HomePage'
 // import Register from './components/Register'
 import Presentacion from './pages/Presentation'
 import PageCero from './pages/PageCero'
@@ -18,11 +16,8 @@ function App() {
   const { train } = trainProvider
 
   return (
-    <div className=" h-screen rubik-regular">
-      <Header />{' '}
-      <div>
-        <img src="" alt="" />
-      </div>
+    <div className=" h-screen rubik-regular text-[#eee]">
+      {/* <Header />{' '} */}
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
         <Route exact path="/presentacion" element={<Presentacion />}></Route>
@@ -36,7 +31,7 @@ function App() {
         <Route
           exact
           path="/page-trainGenerated"
-          element={<PageTrainGenerated workout={train} />}
+          element={<PageTrainGenerated />}
         ></Route>
       </Routes>
     </div>

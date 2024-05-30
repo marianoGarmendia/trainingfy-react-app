@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
+import CerebroSVG from '../svg/CerebroSVG'
 
 function Loading({ children }) {
   return (
     <motion.div
-      className=" w-[100px] h-[100px] bg-sambayon flex justify-center items-center"
+      className="mx-auto w-fit   flex justify-center items-center"
       animate={{
         scale: [1, 2, 2, 1, 1],
         rotate: [0, 0, 180, 180, 0],
@@ -17,7 +18,7 @@ function Loading({ children }) {
         repeatDelay: 1,
       }}
     >
-      <img src={children} alt="" className="w-[50%] h-[50%]" />
+      <CerebroSVG></CerebroSVG>
     </motion.div>
   )
 }

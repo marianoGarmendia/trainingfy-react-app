@@ -23,9 +23,9 @@ function BarProgress({ progress }) {
     }
   }, [filled])
   return (
-    <div className="w-2/5 mx-auto">
-      <p className="text-center m-1">{filled + '%'}</p>
-      <div className="h-3 rounded-lg mx-auto bg-white">
+    <div className="w-2/5 mx-auto ">
+      <p className="text-center text-sm text-sambayon m-1">{filled + '%'}</p>
+      <div className="h-2 rounded-lg mx-auto bg-white">
         <div
           className=" h-full bg-sambayon rounded-lg"
           style={{ width: `${filled}%` }}

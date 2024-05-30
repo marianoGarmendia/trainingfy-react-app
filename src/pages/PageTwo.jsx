@@ -7,23 +7,34 @@ import BarProgress from '../components/BarProgress'
 function PageTwo() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
+  const intensidad = ['suave', 'moderada', 'A darlo todo']
+
   return (
-    <div className="flex  flex-col items-center md:justify-around gap-6 justify-start   h-2/3">
-      <h1 className="font-bold">¿ Para qué intensidad estas hoy ?</h1>
-      <Link
-        to="/page-three"
-        className=" grid md:grid-cols-3 gap-y-3 gap-x-3 w-[70%] mx-auto"
-        onClick={(e) => {
-          setTrain((prevTrain) => {
-            return { ...prevTrain, intensidad: e.target.value }
-          })
-        }}
-      >
-        <ButtonTrain value={'liviano'}>Tranqui 🐢</ButtonTrain>
-        <ButtonTrain value={'moderado'}>Para moverme un poco 😉</ButtonTrain>
-        <ButtonTrain value={'alta intensidad'}>A dejarlo todo 🔥</ButtonTrain>
-      </Link>
-      <BarProgress progress={40}></BarProgress>
+    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
+        <h1 className="rubik-md text-center">¿ Para qué intensidad estás ?</h1>
+        <Link
+          to="/page-three"
+          className=" "
+          onClick={(e) => {
+            setTrain((prevTrain) => {
+              return { ...prevTrain, intensidad: e.target.value }
+            })
+          }}
+        >
+          <div className="flex flex-col gap-4  ">
+            {intensidad.map((mod, idx) => {
+              return (
+                <ButtonTrain value={mod} key={idx}>
+                  {mod}
+                </ButtonTrain>
+              )
+            })}
+          </div>
+        </Link>
+
+        <BarProgress progress={40}></BarProgress>
+      </div>
     </div>
   )
 }

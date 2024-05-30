@@ -1,38 +1,47 @@
-import { useContext } from 'react'
+import { useContext, useRef, useState, useEffect } from 'react'
+import { motion, useInView, inView } from 'framer-motion'
+
 import { Link } from 'react-router-dom'
 import ButtonTrain from '../components/ButtonTrain'
 import { trainContext } from '../context/TrainProvider'
 import BarProgress from '../components/BarProgress'
 
-function PageUno() {
+function PageCero() {
   const trainPovider = useContext(trainContext)
+  const modalidad = ['Ganar musculo', 'algo variado', 'quemar calorias']
+
   const { setTrain } = trainPovider
 
   return (
-    <div className="flex  flex-col items-center md:justify-around gap-6 justify-start   h-2/3 ">
-      <h1 className="font-bold">
-        ¿ Que objetivo tenés para el entrenamiento de hoy ?
-      </h1>
-      <Link
-        to="/page-one"
-        className=" grid md:grid-cols-3 gap-y-3 gap-x-3 w-[70%] mx-auto"
-        onClick={(e) => {
-          setTrain((prevTrain) => {
-            return { ...prevTrain, objetivo: e.target.value }
-          })
-        }}
-      >
-        <ButtonTrain value={'ganar musculo'}>Ganar músculo 💪</ButtonTrain>
-        <ButtonTrain value={'Quemar grasa, ejercicios cardiovasculares'}>
-          Quemar calorías 🔥
-        </ButtonTrain>
-        <ButtonTrain value={'combinar distintos ejercicios variados'}>
-          Algo variado
-        </ButtonTrain>
-      </Link>
-      <BarProgress progress={0}></BarProgress>
+    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
+        <h1 className="rubik-md text-center">
+          ¿ Que objetivo tenés para el entrenamiento de hoy ?
+        </h1>
+        <Link
+          to="/page-one"
+          className=" "
+          onClick={(e) => {
+            setTrain((prevTrain) => {
+              return { ...prevTrain, objetivo: e.target.value }
+            })
+          }}
+        >
+          <div className="flex flex-col gap-4  ">
+            {modalidad.map((mod, idx) => {
+              return (
+                <ButtonTrain key={idx} value={mod}>
+                  {mod}
+                </ButtonTrain>
+              )
+            })}
+          </div>
+        </Link>
+
+        <BarProgress progress={0}></BarProgress>
+      </div>
     </div>
   )
 }
 
-export default PageUno
+export default PageCero
