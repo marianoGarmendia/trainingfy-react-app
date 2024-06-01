@@ -7,26 +7,28 @@ import BarProgress from '../components/BarProgress'
 
 function PageCero() {
   const trainPovider = useContext(trainContext)
-  const modalidad = ['Ganar musculo', 'algo variado', 'quemar calorias']
+  const modalidad = ['Ganar musculo', 'Algo variado', 'Quemar calorias']
 
   const { setTrain } = trainPovider
 
   return (
-    <div className="flex h-2/3   flex-col items-center justify-around gap-6  ">
-      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
-        <h1 className="rubik-md text-center">
-          ¿ Que objetivo tenés para el entrenamiento de hoy ?
-        </h1>
+    <div className=" h-[90%] w-full px-4  flex flex-col items-center justify-around  ">
+      <h1 className="rubik-md text-center tracking-wide col-span-2">
+        ¿ Que objetivo tenés para el entrenamiento de hoy ?
+      </h1>
+      <div className=" w-[70%]  md:w-[50%] rounded-xl shadow-2xl ">
         <Link
           to="/page-one"
-          className=" "
           onClick={(e) => {
             setTrain((prevTrain) => {
               return { ...prevTrain, objetivo: e.target.value }
             })
           }}
         >
-          <div className="flex flex-col gap-4  ">
+          <div
+            className="  w-full  h-full flex justify-center items-center flex-wrap
+           p-4  gap-2  "
+          >
             {modalidad.map((mod, idx) => {
               return (
                 <ButtonTrain key={idx} value={mod}>
@@ -37,7 +39,9 @@ function PageCero() {
           </div>
         </Link>
       </div>
-      <BarProgress progress={0}></BarProgress>
+      <div className="col-span-2 w-full">
+        <BarProgress progress={0}></BarProgress>
+      </div>
     </div>
   )
 }

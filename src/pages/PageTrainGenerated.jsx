@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useContext } from 'react'
+import { WhatsappShareButton, WhatsappIcon } from 'react-share'
 import { Link } from 'react-router-dom'
 import { trainContext } from '../context/TrainProvider'
 import { textGenerator } from '../helpers/textGeneretor'
@@ -9,11 +10,15 @@ import IntensidadSVG from '../svg/IntensidadSVG'
 import ModalidadSVG from '../svg/ModalidadSVG'
 import DuracionSVG from '../svg/DuracionSVG'
 import EquipamientoSVG from '../svg/EquipamientoSVG'
+import GuardarSVG from '../svg/Guardarsvg'
+import CompartirSVG from '../svg/CompartirSVG'
+import CopiarSVG from '../svg/CopiarSVG'
 import Items from '../components/Items'
 
 function PageTrainGenerated() {
   const trainProvider = useContext(trainContext)
   const { userTrain, train } = trainProvider
+  const [save, setSave] = useState(false)
   // const [progress, setProgress] = useState(true)
   const wodRef = useRef(train)
   const [wod, setWod] = useState('')
@@ -21,11 +26,13 @@ function PageTrainGenerated() {
 
   const { intensidad, objetivo, duracion, equipamiento } = train
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setProgress(false)
-  //   }, 500)
-  // }, [])
+  const handleSave = () => {
+    setSave(!save)
+  }
+
+  const handleCopied = () => {
+    navigator.clipboard.writeText(wod)
+  }
 
   useEffect(() => {
     if (!loading) return
@@ -47,8 +54,8 @@ function PageTrainGenerated() {
 
   return (
     <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
-      <div className="md:h-2/3 h-[100%]  py-4 rounded-xl shadow-2xl w-4/5 flex flex-col   items-center">
-        <div className=" w-[90%] md:w-2/3 h-full grid gap-2 grid-rows-7 ">
+      <div className=" h-[100%]  py-4 rounded-xl shadow-2xl w-4/5 flex flex-col   items-center">
+        <div className=" w-[90%] md:w-2/3 h-full grid gap-2 grid-rows-8 ">
           <div className="flex gap-4 justify-between">
             <div>
               <h3 className="">
@@ -81,6 +88,21 @@ function PageTrainGenerated() {
               <Items title={equipamiento}>
                 <EquipamientoSVG></EquipamientoSVG>
               </Items>
+            </div>
+          )}
+          {!loading && (
+            <div className="flex justify-start bg-[#eee] gap-4 px-4 p-2 rounded-lg">
+              <div className="cursor-pointer">
+                <WhatsappShareButton url="https://trainingfy.netlify.app/">
+                  <CompartirSVG></CompartirSVG>
+                </WhatsappShareButton>
+              </div>
+              <div onClick={handleSave}>
+                <GuardarSVG></GuardarSVG>
+              </div>
+              <div onClick={handleCopied} className="cursor-pointer">
+                <CopiarSVG></CopiarSVG>
+              </div>
             </div>
           )}
 

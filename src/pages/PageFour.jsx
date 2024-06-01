@@ -7,14 +7,14 @@ import BarProgress from '../components/BarProgress'
 function PageFour() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
-  const equipamiento = ['maquinas', 'peso corporal', 'mancuernas']
+  const equipamiento = ['Máquinas', 'Peso corporal', 'Mancuernas y Elementos']
 
   return (
-    <div className="flex h-2/3  flex-col items-center  gap-6 justify-around ">
-      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
-        <h1 className="rubik-md text-center">
-          ¿ Que equipamiento querés usar ?
-        </h1>
+    <div className=" h-[90%] w-full px-4  flex flex-col items-center justify-around">
+      <h1 className="rubik-md text-center tracking-wide col-span-2">
+        ¿ Que equipamiento querés usar ?
+      </h1>
+      <div className="w-[70%]  md:w-[50%] rounded-xl shadow-2xl">
         <Link
           to="/page-trainGenerated"
           className=" "
@@ -24,7 +24,10 @@ function PageFour() {
             })
           }}
         >
-          <div className="flex flex-col gap-4  ">
+          <div
+            className="w-full  h-full flex justify-center items-center flex-wrap
+           p-4  gap-2"
+          >
             {equipamiento.map((mod, idx) => {
               return (
                 <ButtonTrain value={mod} key={idx}>
@@ -35,7 +38,9 @@ function PageFour() {
           </div>
         </Link>
       </div>
-      <BarProgress progress={80}></BarProgress>
+      <div className="col-span-2 w-full">
+        <BarProgress progress={80}></BarProgress>
+      </div>
     </div>
   )
 }

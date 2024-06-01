@@ -7,12 +7,14 @@ import BarProgress from '../components/BarProgress'
 function PageTwo() {
   const trainPovider = useContext(trainContext)
   const { setTrain } = trainPovider
-  const intensidad = ['suave', 'moderada', 'A darlo todo']
+  const intensidad = ['Suave', 'Moderada', 'A darlo todo']
 
   return (
-    <div className="flex h-2/3  flex-col items-center  gap-6 justify-around ">
-      <div className="md:h-2/3 h-[90%]  rounded-xl shadow-2xl w-4/5 flex flex-col justify-around items-center">
-        <h1 className="rubik-md text-center">¿ Para qué intensidad estás ?</h1>
+    <div className="  h-[90%] w-full px-4  flex flex-col items-center justify-around    ">
+      <h1 className="rubik-md text-center tracking-wide col-span-2">
+        ¿ Para qué intensidad estás ?
+      </h1>
+      <div className=" w-[70%]  md:w-[50%] rounded-xl shadow-2xl">
         <Link
           to="/page-three"
           className=" "
@@ -22,7 +24,10 @@ function PageTwo() {
             })
           }}
         >
-          <div className="flex flex-col gap-4  ">
+          <div
+            className="w-full  h-full flex justify-center items-center flex-wrap
+           p-4  gap-2"
+          >
             {intensidad.map((mod, idx) => {
               return (
                 <ButtonTrain value={mod} key={idx}>
@@ -33,7 +38,9 @@ function PageTwo() {
           </div>
         </Link>
       </div>
-      <BarProgress progress={40}></BarProgress>
+      <div className="col-span-2 w-full">
+        <BarProgress progress={40}></BarProgress>
+      </div>
     </div>
   )
 }

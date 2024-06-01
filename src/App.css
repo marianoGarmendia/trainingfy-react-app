@@ -81,3 +81,12 @@ body {
 .wod_container[data-is-off='true'] {
   place-content: center;
 }
+
+.save[data-save='true'] {
+  fill: #9ecb18;
+}
+
+.gridCustom {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}

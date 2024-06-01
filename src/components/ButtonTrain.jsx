@@ -9,7 +9,7 @@ function ButtonTrain({ children, value }) {
     >
       <button
         value={value}
-        className="rounded-2xl text-sm  font-semibold rubik-md   bg-sambayon text-[#161714]  p-[10px] place-content-center text-center hover:border-white hover:border hover:text-white transition-all h-[40px] ease-in-out duration-100 cursor-pointer active:scale-95 w-[150px] "
+        className="rounded-2xl text-sm  font-semibold rubik-md   bg-sambayon text-[#161714]  p-[10px] place-content-center text-center hover:border-white hover:border border border-transparent hover:text-white transition-all   ease-in-out duration-100 cursor-pointer w-[150px] active:scale-95 "
       >
         {children}
       </button>
