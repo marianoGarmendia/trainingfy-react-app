@@ -40,7 +40,6 @@ function Register() {
                 className="font-semibold text-white hover:text-sambayon transition-all duration-200"
                 to="/"
               >
-                {' '}
                 Login
               </Link>
             </p>
