@@ -68,7 +68,7 @@ function PageTrainGenerated() {
               </p>
             </div>
             <Link
-              to="/page-cero"
+              to="/presentacion"
               className=" rounded-2xl text-sm  font-semibold rubik-md   bg-sambayon text-[#161714]  p-[10px] place-content-center text-center hover:border-white hover:border hover:text-white transition-all h-[40px] ease-in-out duration-100 cursor-pointer active:scale-95 w-[100px] "
             >
               Inicio
