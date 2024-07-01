@@ -6,6 +6,7 @@ export function TrainProvider({ children }) {
   const [userTrain, setUserTrain] = useState('')
   const [train, setTrain] = useState({})
   const [filled, setFilled] = useState(0)
+
   return (
     <trainContext.Provider
       value={{
