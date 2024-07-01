@@ -7,27 +7,24 @@ export function useUser() {
 
   return userContextValues
 }
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-
   // en el register debo agregar el usuario a la db ,no en el login
   const addUser = async (userLogged) => {
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/addUser`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({
-            uid: userLogged.user.uid,
-            user: userLogged.user,
-          }),
-        }
-      )
+      const response = await fetch(`${BACKEND_URL}/addUser`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          uid: userLogged.user.uid,
+          user: userLogged.user,
+        }),
+      })
       return response
     } catch (error) {
       console.log('useContext error')
@@ -38,16 +35,13 @@ export function UserProvider({ children }) {
 
   const logout = async () => {
     try {
-      const logoutRes = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/logout`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        }
-      )
+      const logoutRes = await fetch(`${BACKEND_URL}/logout`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
 
       logoutRes.status === 200 ? setUser(null) : console.log('Algo fallo')
     } catch (error) {
@@ -58,12 +52,9 @@ export function UserProvider({ children }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/verifyUser`,
-          {
-            credentials: 'include',
-          }
-        )
+        const response = await fetch(`${BACKEND_URL}/verifyUser`, {
+          credentials: 'include',
+        })
         const userRes = await response.json()
 
         const { userFound } = userRes

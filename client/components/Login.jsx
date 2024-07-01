@@ -3,26 +3,23 @@ import { useState, useEffect } from 'react'
 import { validateLogin } from '../helpers/validateLogin'
 import MessageRegister from './MessageRegister'
 import { useUser } from '../context/UserContext.jsx'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function Login() {
-  const { user, setUser } = useUser()
+  const { user } = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const responseRegister = await fetch(
-      `${import.meta.env.BACKEND_URL}/login`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: 'include',
-      }
-    )
+    const responseRegister = await fetch(`${BACKEND_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+      credentials: 'include',
+    })
 
     const res = await responseRegister.json()
     const responseValidate = validateLogin(res)
