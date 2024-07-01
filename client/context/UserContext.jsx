@@ -37,15 +37,12 @@ export function UserProvider({ children }) {
     try {
       const logoutRes = await fetch(`${BACKEND_URL}/logout`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         credentials: 'include',
       })
 
       logoutRes.status === 200 ? setUser(null) : console.log('Algo fallo')
     } catch (error) {
-      console.log('error en contexto de usuario ')
+      console.log(error, 'error en contexto de usuario ')
     }
   }
 

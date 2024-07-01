@@ -73,12 +73,19 @@ authRouter.post('/login', async (req, res) => {
 
 authRouter.post('/logout', async (req, res) => {
   const accessToken = req.cookies.token
-  if (!accessToken)
-    return res.status(401).json({ message: 'Access not authorized' })
+  try {
+    if (!accessToken)
+      return res.status(401).json({ message: 'Access not authorized' })
 
-  res.clearCookie('token')
-
-  res.send()
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None',
+    })
+    res.send()
+  } catch (error) {
+    res.send(error)
+  }
 })
 
 authRouter.get('/verifyUser', async (req, res) => {
