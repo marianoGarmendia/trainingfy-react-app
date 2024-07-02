@@ -31,7 +31,7 @@ const userRef = collection(db, 'users')
 export const getUserFirestore = async ({ id }) => {
   const userDb = await getDocs(userRef).then((querySnap) => {
     const userFound = querySnap.docs.find((docs) => {
-      return docs.id === id.uid
+      return docs.id === id
     })
     return userFound.data()
   })

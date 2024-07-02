@@ -6,7 +6,7 @@ import { useUser } from '../context/UserContext.jsx'
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function Login() {
-  const { user } = useUser()
+  const { user, getUser } = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
@@ -28,8 +28,7 @@ function Login() {
       setError(responseValidate.message)
     } else {
       const { user } = responseValidate
-      console.log(user)
-      // setUser(user)
+      getUser({ id: user.uid })
     }
   }
 

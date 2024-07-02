@@ -30,7 +30,7 @@ authRouter.post('/register', async (req, res) => {
 
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: true,
       sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000,
     })
@@ -58,7 +58,6 @@ authRouter.post('/login', async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: true,
-
       sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000,
     })
@@ -90,11 +89,23 @@ authRouter.post('/logout', async (req, res) => {
 
 authRouter.get('/verifyUser', async (req, res) => {
   const accessToken = req.cookies.token
+
   if (!accessToken)
     return res.status(401).json({ message: 'Access not authorized' })
   // Decoded token para obtener el id
-  const uid = jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
-  const userFound = await getUserFirestore({ id: uid })
+  const id = jwt.verify(accessToken, process.env.JWT_SECRET_KEY)
+
+  const userFound = await getUserFirestore({ id: id.uid })
 
   res.json({ userFound })
+})
+
+authRouter.get('/getUser/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+    const userFound = await getUserFirestore({ id })
+    res.json({ userFound })
+  } catch (error) {
+    res.send(error)
+  }
 })

@@ -1,11 +1,16 @@
 import { Outlet, Navigate } from 'react-router-dom'
 import { useUser } from '../context/UserContext'
+import CircularWithValueLabel from '../components/ProgressLoading'
 
 function ProtectedPage(children) {
   const { user, loading } = useUser()
 
   if (!user && loading) {
-    return <h1>Loading...</h1>
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <CircularWithValueLabel></CircularWithValueLabel>
+      </div>
+    )
   } else if (!user && loading === false) {
     return <Navigate to="/" replace></Navigate>
   } else {

@@ -24,6 +24,7 @@ export function UserProvider({ children }) {
           uid: userLogged.user.uid,
           user: userLogged.user,
         }),
+        credentials: 'include',
       })
       return response
     } catch (error) {
@@ -31,7 +32,15 @@ export function UserProvider({ children }) {
     }
   }
 
-  const getUser = () => {}
+  const getUser = async ({ id }) => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/getUser/${id}`)
+      const { userFound } = await response.json()
+      setUser(userFound)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const logout = async () => {
     try {
@@ -73,6 +82,7 @@ export function UserProvider({ children }) {
         setUser,
         addUser,
         logout,
+        getUser,
       }}
     >
       {children}
