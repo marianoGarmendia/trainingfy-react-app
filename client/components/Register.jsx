@@ -13,7 +13,6 @@ function Register() {
   const userToRegister = useRef(null)
   const [statusRegister, setStatusRegister] = useState(null)
   const [responserRegister, setResponseRegister] = useState(null)
-  const [isDisabled, setIsDisabled] = useState(false)
 
   const [responseFetch, setResponseFetch] = useState(null)
 
@@ -21,7 +20,7 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsDisabled(true)
+
     userToRegister.current = { email, password }
     try {
       const responseRegister = await fetch(
@@ -78,8 +77,6 @@ function Register() {
       setEmail('')
       setPassword('')
       navigate('/presentacion')
-    } else {
-      setIsDisabled(false)
     }
   }, [statusRegister, responserRegister])
 
