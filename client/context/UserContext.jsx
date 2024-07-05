@@ -42,6 +42,7 @@ export function UserProvider({ children }) {
       const response = await fetch(`${BACKEND_URL}/getUser/${id}`)
       const { userFound } = await response.json()
       setUser(userFound)
+      setLoading(false)
     } catch (error) {
       console.log(error)
     }
@@ -126,6 +127,7 @@ export function UserProvider({ children }) {
     <userContext.Provider
       value={{
         loading,
+        setLoading,
         user,
         setUser,
         addUser,

@@ -2,11 +2,12 @@ import { Link, Navigate } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import validateregister from '../helpers/validateRegister'
 import MessageRegister from './MessageRegister'
+import CircularWithValueLabel from './ProgressLoading.jsx'
 import { useUser } from '../context/UserContext.jsx'
 
 function Register() {
   // const navigate = useNavigate()
-  const { addUser, setUser, user } = useUser()
+  const { addUser, setUser, user, loading, setLoading } = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
@@ -20,6 +21,7 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
 
     userToRegister.current = { email, password }
     try {
@@ -74,10 +76,19 @@ function Register() {
     if (!statusRegister) return
     if (statusRegister === 200) {
       setUser(responserRegister)
+      setLoading(false)
       setEmail('')
       setPassword('')
     }
   }, [statusRegister, responserRegister])
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <CircularWithValueLabel></CircularWithValueLabel>
+      </div>
+    )
+  }
 
   return (
     <>

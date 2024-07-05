@@ -2,16 +2,20 @@ import { Link, Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { validateLogin } from '../helpers/validateLogin'
 import MessageRegister from './MessageRegister'
+import CircularWithValueLabel from './ProgressLoading.jsx'
 import { useUser } from '../context/UserContext.jsx'
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function Login() {
-  const { user, getUser } = useUser()
+  const { user, getUser, loading, setLoading } = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+  const [isLoading, setIsloading] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     const responseRegister = await fetch(`${BACKEND_URL}/login`, {
       method: 'POST',
       headers: {
@@ -41,6 +45,13 @@ function Login() {
     }
   }, [error])
 
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <CircularWithValueLabel></CircularWithValueLabel>
+      </div>
+    )
+  }
   return (
     <>
       {user ? (

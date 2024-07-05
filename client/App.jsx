@@ -24,7 +24,7 @@ function App() {
 
         <Route element={<ProtectedPage />}>
           <Route exact path="/presentacion" element={<Presentacion />}></Route>
-          <Route exact path="/signUp"></Route>
+          {/* <Route exact path="/signUp"></Route> */}
           <Route exact path="/page-cero" element={<PageCero />}></Route>
           <Route exact path="/page-one" element={<PageUno />}></Route>
           <Route exact path="/page-two" element={<PageTwo />}></Route>
