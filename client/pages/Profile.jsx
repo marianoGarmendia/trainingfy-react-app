@@ -49,6 +49,9 @@ function Profile() {
                   </Items>
                 </div>
                 <article
+                  onClick={() => {
+                    console.log(workout.trainId)
+                  }}
                   id={workout.trainId}
                   className="bg-[#eee] h-[300px]  overflow-scroll scrollable w-full text-center rounded-xl  text-sm rubik-regular text-[#161714]   p-4"
                 >
