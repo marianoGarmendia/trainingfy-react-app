@@ -43,7 +43,6 @@ function Register() {
       } else {
         registerValidation.user.displayName = displayName
         const resAddUser = await addUser(registerValidation)
-        console.log(resAddUser)
         const { user } = registerValidation
         setResponseRegister(user)
         setStatusRegister(resAddUser.status)
@@ -77,7 +76,6 @@ function Register() {
       setUser(responserRegister)
       setEmail('')
       setPassword('')
-      // navigate('/presentacion')
     }
   }, [statusRegister, responserRegister])
 

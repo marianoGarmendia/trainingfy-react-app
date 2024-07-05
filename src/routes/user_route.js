@@ -1,9 +1,20 @@
 import { Router } from 'express'
 
+import { setDoc, doc, collection } from 'firebase/firestore'
+import { db } from '../db.js'
+
 import { addTrain } from '../controllers/addTrain.js'
 import { getTrain } from '../controllers/getTrain.js'
 
 export const userRouter = Router()
+const userRef = collection(db, 'users')
+
+userRouter.post('/addUser', async (req, res) => {
+  const { user, uid } = req.body
+
+  const response = await setDoc(doc(userRef, uid), user)
+  return res.send(response)
+})
 
 // Ruta para agregar entrenamientos con userId, trainId, train
 userRouter.post('/addTrain', async (req, res) => {
