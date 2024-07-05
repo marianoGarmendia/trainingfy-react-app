@@ -55,9 +55,9 @@ export function UserProvider({ children }) {
       })
 
       if (logoutRes.status === 200) {
-        setUser(null)
-        setNewSaved(true)
         setTrainSaved([])
+        setNewSaved(true)
+        setUser(null)
       } else {
         console.log('Algo fallo en cerrar sesion')
       }
