@@ -46,7 +46,7 @@ function PageTrainGenerated() {
   const handleCopied = () => {
     setCopied(!copied)
     navigator.clipboard.writeText(wod)
-    notify('Copiado!')
+    if (!copied) notify('Copiado!')
   }
 
   useEffect(() => {
