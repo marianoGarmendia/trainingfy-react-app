@@ -1,12 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import validateregister from '../helpers/validateRegister'
 import MessageRegister from './MessageRegister'
 import { useUser } from '../context/UserContext.jsx'
 
 function Register() {
-  const navigate = useNavigate()
-  const { addUser, setUser } = useUser()
+  // const navigate = useNavigate()
+  const { addUser, setUser, user } = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
@@ -43,6 +43,7 @@ function Register() {
       } else {
         registerValidation.user.displayName = displayName
         const resAddUser = await addUser(registerValidation)
+        console.log(resAddUser)
         const { user } = registerValidation
         setResponseRegister(user)
         setStatusRegister(resAddUser.status)
@@ -76,77 +77,84 @@ function Register() {
       setUser(responserRegister)
       setEmail('')
       setPassword('')
-      navigate('/presentacion')
+      // navigate('/presentacion')
     }
   }, [statusRegister, responserRegister])
 
   return (
-    <div>
-      <div className="flex items-center justify-center">
-        <div className="backdrop-blur-sm border-[4px] border-sambayon rounded-2xl  transition-all duration-200">
-          <form
-            onSubmit={(e) => handleSubmit(e)}
-            className="relative mx-auto flex items-center space-y-4 py-10 px-12 font-semibold text-gray-500 flex-col"
-          >
-            <h1 className="text-white text-2xl">
-              Registrate en <span className="text-sambayon">Trainingfy</span>
-            </h1>
-
-            <input
-              required
-              className="w-full p-2 bg-sambayon/90  text-custombg placeholder:text-custombg rounded-md border border-customInterior focus:border-white hover:border-white transition-all duration-200"
-              placeholder="Correo@..."
-              type="Email"
-              name="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-            />
-            <input
-              type="text"
-              required
-              className="w-full p-2 bg-sambayon/90  text-custombg placeholder:text-custombg rounded-md border border-customInterior focus:border-white hover:border-white transition-all duration-200"
-              placeholder="nombre de usuario"
-              value={displayName}
-              onChange={(e) => {
-                setDisplayName(e.target.value)
-              }}
-            />
-            <input
-              required
-              className="w-full p-2 bg-sambayon/90  text-custombg placeholder:text-custombg rounded-md border border-customInterior focus:border-white hover:border-white transition-all duration-200"
-              placeholder="*********"
-              type="password"
-              autoComplete="new-password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value)
-              }}
-            />
-            <button
-              className="w-full p-2 bg-gray-50 rounded-full active:scale-95 cursor-pointer font-bold text-custombg border-[2px] border-custombg hover:border-sambayon transition-all duration-200 "
-              type="submit"
-            >
-              Registrate{' '}
-            </button>
-            <p>
-              Ya tenés cuenta?
-              <Link
-                className="font-semibold text-white hover:text-sambayon   transition-all duration-200"
-                to="/login"
+    <>
+      {user ? (
+        <Navigate to="/presentacion"></Navigate>
+      ) : (
+        <div>
+          <div className="flex items-center justify-center">
+            <div className="backdrop-blur-sm border-[4px] border-sambayon rounded-2xl  transition-all duration-200">
+              <form
+                onSubmit={(e) => handleSubmit(e)}
+                className="relative mx-auto flex items-center space-y-4 py-10 px-12 font-semibold text-gray-500 flex-col"
               >
-                {' '}
-                Inicia sesión
-              </Link>
-            </p>
-            {infoRegister !== '' && (
-              <MessageRegister message={infoRegister}></MessageRegister>
-            )}
-          </form>
+                <h1 className="text-white text-2xl">
+                  Registrate en{' '}
+                  <span className="text-sambayon">Trainingfy</span>
+                </h1>
+
+                <input
+                  required
+                  className="w-full p-2 bg-sambayon/90  text-custombg placeholder:text-custombg rounded-md border border-customInterior focus:border-white hover:border-white transition-all duration-200"
+                  placeholder="Correo@..."
+                  type="Email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                  }}
+                />
+                <input
+                  type="text"
+                  required
+                  className="w-full p-2 bg-sambayon/90  text-custombg placeholder:text-custombg rounded-md border border-customInterior focus:border-white hover:border-white transition-all duration-200"
+                  placeholder="nombre de usuario"
+                  value={displayName}
+                  onChange={(e) => {
+                    setDisplayName(e.target.value)
+                  }}
+                />
+                <input
+                  required
+                  className="w-full p-2 bg-sambayon/90  text-custombg placeholder:text-custombg rounded-md border border-customInterior focus:border-white hover:border-white transition-all duration-200"
+                  placeholder="*********"
+                  type="password"
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
+                />
+                <button
+                  className="w-full p-2 bg-gray-50 rounded-full active:scale-95 cursor-pointer font-bold text-custombg border-[2px] border-custombg hover:border-sambayon transition-all duration-200 "
+                  type="submit"
+                >
+                  Registrate{' '}
+                </button>
+                <p>
+                  Ya tenés cuenta?
+                  <Link
+                    className="font-semibold text-white hover:text-sambayon   transition-all duration-200"
+                    to="/login"
+                  >
+                    {' '}
+                    Inicia sesión
+                  </Link>
+                </p>
+                {infoRegister !== '' && (
+                  <MessageRegister message={infoRegister}></MessageRegister>
+                )}
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 

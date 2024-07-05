@@ -1,6 +1,5 @@
 import { Router } from 'express'
-import { setDoc, doc, getDocs, collection, addDoc } from 'firebase/firestore'
-import { db } from '../db.js'
+
 import { addTrain } from '../controllers/addTrain.js'
 import { getTrain } from '../controllers/getTrain.js'
 

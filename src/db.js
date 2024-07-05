@@ -33,7 +33,9 @@ export const getUserFirestore = async ({ id }) => {
     const userFound = querySnap.docs.find((docs) => {
       return docs.id === id
     })
-    return userFound.data()
+    if (userFound) {
+      return userFound.data()
+    }
   })
 
   return userDb
