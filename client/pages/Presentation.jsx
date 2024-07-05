@@ -21,12 +21,15 @@ function Presentacion() {
   return (
     <div className="h-screen  flex flex-col items-center  ">
       <div className="h-[35%] md:h-[45%] relative md:w-[50%] w-full mx-auto shadow-inner  flex justify-between  shadow-black/30 rounded-b-3xl  ">
-        <div className=" p-4 px-6">
+        <div className=" p-4 px-6 z-30">
           <p className="text-sm">Bienvenidx</p>
           <p>
             Hola {user ? user.displayName : ''}
             <span className="text-sambayon">!</span>{' '}
           </p>
+          <Link className="text-xs" to="/profile">
+            Mi perfil
+          </Link>
         </div>
         <div onClick={logout} className="p-4 px-6 cursor-pointer z-20">
           <CerrarSVG></CerrarSVG>

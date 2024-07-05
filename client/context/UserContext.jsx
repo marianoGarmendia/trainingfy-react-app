@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react'
+import { json } from 'react-router-dom'
 
 export const userContext = createContext()
 
@@ -10,8 +11,11 @@ export function useUser() {
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export function UserProvider({ children }) {
+  const [trainSaved, setTrainSaved] = useState([])
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [newSaved, setNewSaved] = useState(true)
+
   // en el register debo agregar el usuario a la db ,no en el login
   const addUser = async (userLogged) => {
     try {
@@ -32,6 +36,7 @@ export function UserProvider({ children }) {
     }
   }
 
+  // Obtengo el usuario desde la base de datos de Firestore
   const getUser = async ({ id }) => {
     try {
       const response = await fetch(`${BACKEND_URL}/getUser/${id}`)
@@ -49,12 +54,19 @@ export function UserProvider({ children }) {
         credentials: 'include',
       })
 
-      logoutRes.status === 200 ? setUser(null) : console.log('Algo fallo')
+      if (logoutRes.status === 200) {
+        setUser(null)
+        setNewSaved(true)
+        setTrainSaved([])
+      } else {
+        console.log('Algo fallo en cerrar sesion')
+      }
     } catch (error) {
       console.log(error, 'error en contexto de usuario ')
     }
   }
 
+  // Al recargar la página verifico si hay un usuario con sesion mediante el envío de las cookies
   useEffect(() => {
     async function fetchData() {
       try {
@@ -74,6 +86,42 @@ export function UserProvider({ children }) {
     fetchData()
   }, [])
 
+  async function getTrain() {
+    const training = await fetch(`${BACKEND_URL}/getTrain/${user.uid}`)
+    const workoutFound = await training.json()
+
+    workoutFound.forEach((workout) => {
+      setTrainSaved((prevWorkout) => [
+        ...prevWorkout,
+        {
+          trainId: workout.trainId,
+          wod: workout.wod,
+          caracteristicas: workout.caracteristicas,
+        },
+      ])
+    })
+  }
+
+  const addTrainByUser = async ({ userId, wod, trainId, train }) => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/addTrain`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId,
+          wod,
+          trainId,
+          caracteristicas: train,
+        }),
+      })
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <userContext.Provider
       value={{
@@ -83,6 +131,12 @@ export function UserProvider({ children }) {
         addUser,
         logout,
         getUser,
+        addTrainByUser,
+        trainSaved,
+        setTrainSaved,
+        getTrain,
+        setNewSaved,
+        newSaved,
       }}
     >
       {children}

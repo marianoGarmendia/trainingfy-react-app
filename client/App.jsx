@@ -12,6 +12,7 @@ import PageTrainGenerated from './pages/PageTrainGenerated'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ProtectedPage from './pages/ProtectedPage'
+import Profile from './pages/Profile'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             path="/page-trainGenerated"
             element={<PageTrainGenerated />}
           ></Route>
+          <Route exact path="/profile" element={<Profile />}></Route>
         </Route>
       </Routes>
     </div>

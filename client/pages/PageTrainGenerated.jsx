@@ -1,5 +1,9 @@
 import { useEffect, useState, useRef, useContext } from 'react'
-import { WhatsappShareButton, WhatsappIcon } from 'react-share'
+import { WhatsappShareButton } from 'react-share'
+import { ToastContainer, toast } from 'react-toastify'
+import { nanoid } from 'nanoid'
+import { useUser } from '../context/UserContext'
+import 'react-toastify/dist/ReactToastify.css'
 import { Link } from 'react-router-dom'
 import { trainContext } from '../context/TrainProvider'
 import { textGenerator } from '../helpers/textGeneretor'
@@ -14,24 +18,35 @@ import GuardarSVG from '../svg/Guardarsvg'
 import CompartirSVG from '../svg/CompartirSVG'
 import CopiarSVG from '../svg/CopiarSVG'
 import Items from '../components/Items'
+import '../App.css'
 
 function PageTrainGenerated() {
+  const { user, addTrainByUser, setNewSaved } = useUser()
   const trainProvider = useContext(trainContext)
   const { userTrain, train } = trainProvider
   const [save, setSave] = useState(false)
-  // const [progress, setProgress] = useState(true)
+  const [copied, setCopied] = useState(false)
   const wodRef = useRef(train)
   const [wod, setWod] = useState('')
   const [loading, setLoading] = useState(true)
 
   const { intensidad, objetivo, duracion, equipamiento } = train
+  const notify = (message) => toast(message)
 
   const handleSave = () => {
     setSave(!save)
+    if (!save) {
+      notify('Guardado!')
+      const trainId = nanoid()
+      addTrainByUser({ userId: user.uid, wod, trainId, train })
+      setNewSaved(true)
+    }
   }
 
   const handleCopied = () => {
+    setCopied(!copied)
     navigator.clipboard.writeText(wod)
+    notify('Copiado!')
   }
 
   useEffect(() => {
@@ -67,12 +82,20 @@ function PageTrainGenerated() {
                 para vos.
               </p>
             </div>
-            <Link
-              to="/presentacion"
-              className=" rounded-2xl text-sm  font-semibold rubik-md   bg-sambayon text-[#161714]  p-[10px] place-content-center text-center hover:border-white hover:border hover:text-white transition-all h-[40px] ease-in-out duration-100 cursor-pointer active:scale-95 w-[100px] "
-            >
-              Inicio
-            </Link>
+            <div className="flex flex-col gap-2">
+              <Link
+                to="/presentacion"
+                className=" rounded-2xl text-sm  font-semibold rubik-md   bg-sambayon text-[#161714]  p-[10px] place-content-center text-center hover:border-white hover:border hover:text-white transition-all h-[40px] ease-in-out duration-100 cursor-pointer active:scale-95 w-[100px] "
+              >
+                Inicio
+              </Link>
+              <Link
+                to="/profile"
+                className=" rounded-2xl text-sm  font-semibold rubik-md   bg-sambayon text-[#161714]  p-[10px] place-content-center text-center hover:border-white hover:border hover:text-white transition-all h-[40px] ease-in-out duration-100 cursor-pointer active:scale-95 w-[100px] "
+              >
+                Mi perfil
+              </Link>
+            </div>
           </div>
           {!loading && (
             <div className="rounded-xl border border-white flex justify-around     bg-[#eee]   ">
@@ -103,6 +126,7 @@ function PageTrainGenerated() {
               <div onClick={handleCopied} className="cursor-pointer">
                 <CopiarSVG></CopiarSVG>
               </div>
+              <ToastContainer />
             </div>
           )}
 

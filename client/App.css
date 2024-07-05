@@ -90,3 +90,22 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
+
+.grid_workout_saved {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+  color: #000;
+}
+
+.Toastify__toast-theme--light {
+  background-color: #9ecb18;
+  color: #161714;
+  font-weight: 500;
+  font-family: 'Rubik', sans-serif;
+}
