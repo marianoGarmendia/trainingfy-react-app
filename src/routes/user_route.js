@@ -5,6 +5,7 @@ import { db } from '../db.js'
 
 import { addTrain } from '../controllers/addTrain.js'
 import { getTrain } from '../controllers/getTrain.js'
+import { deleteWod } from '../controllers/deleteTrain.js'
 
 export const userRouter = Router()
 const userRef = collection(db, 'users')
@@ -37,5 +38,15 @@ userRouter.get('/getTrain/:userId', async (req, res) => {
     res.send(foundWorkouts)
   } catch (error) {
     res.send(error)
+  }
+})
+
+userRouter.delete('/deleteWod/:trainId', async (req, res) => {
+  const trainId = req.params.trainId
+  try {
+    const responseDelete = await deleteWod({ trainId })
+    res.json(responseDelete)
+  } catch (error) {
+    res.json(error)
   }
 })
