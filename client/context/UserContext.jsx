@@ -1,5 +1,4 @@
 import { useState, useEffect, createContext, useContext } from 'react'
-import { json } from 'react-router-dom'
 
 export const userContext = createContext()
 
@@ -117,7 +116,11 @@ export function UserProvider({ children }) {
           caracteristicas: train,
         }),
       })
-      console.log(response)
+      if (response.status === 200) {
+        return true
+      } else {
+        return false
+      }
     } catch (error) {
       console.log(error)
     }

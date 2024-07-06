@@ -38,8 +38,8 @@ function PageTrainGenerated() {
     if (!save) {
       notify('Guardado!')
       const trainId = nanoid()
-      addTrainByUser({ userId: user.uid, wod, trainId, train })
-      setNewSaved(true)
+      const response = addTrainByUser({ userId: user.uid, wod, trainId, train })
+      if (response) setNewSaved(true)
     }
   }
 
@@ -52,11 +52,9 @@ function PageTrainGenerated() {
   useEffect(() => {
     if (!loading) return
     const fechData = async () => {
-      // setLoading(true)
       if (wodRef.current.objetivo === undefined) return
       try {
         const result = await textGenerator(JSON.stringify(wodRef.current))
-        // wodRef.current = result.choices[0].message.content
         setWod(result.choices[0].message.content)
         console.log()
         setLoading(false)
