@@ -16,7 +16,7 @@ import Profile from './pages/Profile'
 
 function App() {
   return (
-    <div className=" place-content-center w-full h-screen rubik-regular text-[#eee]">
+    <div className=" place-content-center w-full h-[100dvh] rubik-regular text-[#eee]">
       <Routes>
         <Route exact path="/" element={<HomePage />}></Route>
         <Route exact path="/login" element={<LoginPage />}></Route>
