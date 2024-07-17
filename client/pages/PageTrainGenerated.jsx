@@ -66,7 +66,7 @@ function PageTrainGenerated() {
   }, [])
 
   return (
-    <div className="flex h-screen  flex-col items-center md:justify-center gap-6 justify-center ">
+    <div className="flex h-[100dvh]  flex-col items-center md:justify-center gap-6 justify-center ">
       <div className=" h-[100%]  py-4 rounded-xl shadow-2xl w-4/5 flex flex-col   items-center">
         <div className=" w-[90%] md:w-2/3 h-full grid gap-2 grid-rows-8 ">
           <div className="flex gap-4 justify-between">

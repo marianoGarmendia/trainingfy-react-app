@@ -10,7 +10,7 @@ function PageUno() {
   const sector = ['Piernas', 'Brazos', 'Abdominales', 'Cuerpo entero']
 
   return (
-    <div className="  h-[90%] w-full px-4  flex flex-col items-center justify-around     ">
+    <div className="  h-[90dvh] w-full px-4  flex flex-col items-center justify-around     ">
       <h1 className="rubik-md text-center tracking-wide col-span-2">
         ¿ Que parte querés trabajar más ?
       </h1>

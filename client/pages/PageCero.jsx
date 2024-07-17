@@ -12,7 +12,7 @@ function PageCero() {
   const { setTrain } = trainPovider
 
   return (
-    <div className=" h-[90%] w-full px-4  flex flex-col items-center justify-around  ">
+    <div className=" h-[90dvh] w-full px-4  flex flex-col items-center justify-around  ">
       <h1 className="rubik-md text-center tracking-wide col-span-2">
         ¿ Que objetivo tenés para el entrenamiento de hoy ?
       </h1>

@@ -46,7 +46,7 @@ function Profile() {
   }, [isDeleted])
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center gap-4 p-11">
+    <div className="w-full h-[100dvh] flex flex-col justify-center items-center gap-4 p-11">
       <header className="w-full bg-[#212121] p-4 rounded-xl flex justify-between">
         <h3>Entrenamientos guardados ({trainSaved.length})</h3>
         <Link to="/presentacion">Inicio</Link>

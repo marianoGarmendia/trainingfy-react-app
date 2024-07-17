@@ -10,7 +10,7 @@ function PageTwo() {
   const intensidad = ['Suave', 'Moderada', 'A darlo todo']
 
   return (
-    <div className="  h-[90%] w-full px-4  flex flex-col items-center justify-around    ">
+    <div className="  h-[90dvh] w-full px-4  flex flex-col items-center justify-around    ">
       <h1 className="rubik-md text-center tracking-wide col-span-2">
         ¿ Para qué intensidad estás ?
       </h1>
