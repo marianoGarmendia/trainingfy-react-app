@@ -9,6 +9,7 @@ import { trainContext } from '../context/TrainProvider'
 import { textGenerator } from '../helpers/textGeneretor'
 import Loading from '../components/Loading'
 import BarProgress from '../components/BarProgress'
+import WodFormatted from '../components/WodFormatted'
 
 import IntensidadSVG from '../svg/IntensidadSVG'
 import ModalidadSVG from '../svg/ModalidadSVG'
@@ -55,8 +56,10 @@ function PageTrainGenerated() {
       if (wodRef.current.objetivo === undefined) return
       try {
         const result = await textGenerator(JSON.stringify(wodRef.current))
-        setWod(result.choices[0].message.content)
-        console.log()
+        // console.log('result', result)
+
+        setWod(result)
+
         setLoading(false)
       } catch (err) {
         console.error('Un error ha ocurrido: ', err)
@@ -142,7 +145,8 @@ function PageTrainGenerated() {
               {loading || wod === '' ? (
                 <Loading></Loading>
               ) : (
-                <pre className="py-2 whitespace-pre-wrap    ">{wod}</pre>
+                // <pre className="py-2 whitespace-pre-wrap    ">{wod}</pre>
+                <WodFormatted wod={wod}></WodFormatted>
               )}
             </div>
           </article>

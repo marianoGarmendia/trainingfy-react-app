@@ -9,6 +9,8 @@ import IntensidadSVG from '../svg/IntensidadSVG'
 import EquipamientoSVG from '../svg/EquipamientoSVG'
 import DeleteSVG from '../svg/DeleteSVG'
 import { ToastContainer, toast } from 'react-toastify'
+import Exercise from '../components/Exercises'
+import WodFormatted from '../components/WodFormatted'
 import '../App.css'
 
 function Profile() {
@@ -82,9 +84,7 @@ function Profile() {
                   className="bg-[#eee] h-[300px] relative  overflow-scroll scrollable w-full text-center rounded-xl  text-sm rubik-regular text-[#161714]   p-4"
                 >
                   <div className="wod_container w-full relative    h-full   ">
-                    <pre className="py-2 whitespace-pre-wrap    ">
-                      {workout.wod}
-                    </pre>
+                    <WodFormatted wod={workout.wod}></WodFormatted>
                   </div>
                 </article>
                 <div className="bg-[#eee] rounded-md p-2">
