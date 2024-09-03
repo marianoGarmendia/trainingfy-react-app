@@ -56,7 +56,6 @@ function PageTrainGenerated() {
       if (wodRef.current.objetivo === undefined) return
       try {
         const result = await textGenerator(JSON.stringify(wodRef.current))
-        // console.log('result', result)
 
         setWod(result)
 
@@ -117,7 +116,7 @@ function PageTrainGenerated() {
           {!loading && (
             <div className="flex justify-start bg-[#eee] gap-4 px-4 p-2 rounded-lg">
               <div className="cursor-pointer">
-                <WhatsappShareButton url="https://trainingfy.netlify.app/">
+                <WhatsappShareButton url="https://trainingfy-react-app.onrender.com/">
                   <CompartirSVG></CompartirSVG>
                 </WhatsappShareButton>
               </div>

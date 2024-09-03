@@ -9,7 +9,6 @@ import IntensidadSVG from '../svg/IntensidadSVG'
 import EquipamientoSVG from '../svg/EquipamientoSVG'
 import DeleteSVG from '../svg/DeleteSVG'
 import { ToastContainer, toast } from 'react-toastify'
-import Exercise from '../components/Exercises'
 import WodFormatted from '../components/WodFormatted'
 import '../App.css'
 
