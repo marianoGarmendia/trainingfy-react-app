@@ -2,6 +2,7 @@ import Exercise from './Exercises'
 
 function WodFormatted({ wod }) {
   const { tiempo, modalidad, ejercicios } = wod
+  console.log(wod)
 
   return (
     <div className="p-4 bg-sambayon text-customInterior font-semibold rounded-md">
@@ -13,6 +14,7 @@ function WodFormatted({ wod }) {
         return <Exercise key={idx} exercise={ejercicio}></Exercise>
       })}
     </div>
+    // <h1>Hello wod!</h1>
   )
 }
 

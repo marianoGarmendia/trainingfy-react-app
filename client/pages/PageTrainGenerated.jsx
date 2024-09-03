@@ -65,7 +65,7 @@ function PageTrainGenerated() {
       }
     }
     fechData()
-  }, [])
+  }, [loading])
 
   return (
     <div className="flex h-[100dvh]  flex-col items-center md:justify-center gap-6 justify-center ">
